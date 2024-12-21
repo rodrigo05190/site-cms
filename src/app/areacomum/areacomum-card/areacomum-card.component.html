@@ -1,0 +1,24 @@
+<div class="conteudo br5 borda-cinza hv-bg-cinza-muito-claro pl16 ">
+  <div class="imagem mr16 mt8 mb8">
+    <img *ngIf="icone" [src]="environment.SOURCE_IMAGEM_ROOT +  icone?.arquivo" [alt]="icone?.descricao">
+  </div>
+
+  <div class="textos">
+
+    <div class="descricao mr8 mt8">
+      <span class="azul s1">{{ tipo?.nome }}</span>
+    </div>
+
+    <div class="descricao mr8 s2">
+      <span class="s2 azul">{{ (item?.descricao) || tipo?.nome }}</span>
+    </div>
+
+    <div class="descricao mr8 s0 mb8">
+      <span class="azul">Quantidade: {{ item?.quantidade }}</span>
+    </div>
+  </div>
+
+  <button mat-ripple matRippleColor="rgba(220,0,0,0.3)" class="deletar" (click)="deletar()"><mat-icon>delete</mat-icon></button>
+
+</div>
+

@@ -1,0 +1,33 @@
+<div class="imagem mt8">
+  <img *ngIf="planta?.imagem?.arquivo" [src]="environment.SOURCE_IMAGEM_ROOT + planta.imagem.arquivo" alt="planta">
+</div>
+<div class="botoes grid-infos flex-center center pl8 pr8" *ngIf="planta">
+
+  <button class="botao sombra-1 press bg-vermelho branco brt" (click)="remover()" matTooltip="Desvincular"><mat-icon>delete</mat-icon></button>
+  <button class="botao sombra-1 press bg-azul branco brt" [routerLink]="'./planta/' + planta?.id"  matTooltip="Editar" ><mat-icon>edit</mat-icon></button>
+  <button class="botao sombra-1 press bg-amarelo brt " [matTooltip]="shareText" *ngIf="shareText"><mat-icon>share</mat-icon></button>
+</div>
+<div class="conteudo br5 pl16 pr16 pt16 pb16 bg-cinza-muito-claro">
+  <div class="descricao span s2 ma8 mt16 center w-100 s4">{{ planta?.descricao }} <span>{{ planta?.tamanho }}m²</span></div>
+
+  <div class="info ml8 mr8">
+    <span class="s1">Tipo</span>
+    <span class="s1 ml-full">{{ planta?.tipo?.nome }}</span>
+  </div>
+  <div class="info ml8 mr8">
+    <span class="s1">TourVirtual</span>
+    <span class="s1 ml-full">{{ planta.linkTourVirtual ? 'Sim': 'Não' }}</span>
+  </div>
+  <div class="info ml8 mr8">
+    <span class="s1">Tamanho</span>
+    <span class="s1 ml-full">{{ planta?.tamanho || '? ' }}m²</span>
+  </div>
+  <div *ngFor="let item of planta.plantaComodo" class="info ml8 mr8">
+    <span class="s1">{{ item.tipo.nome }}</span>
+    <span class="s1 ml-full">{{ item.quantidade }}</span>
+  </div>
+  <div class="info ml8 mr8">
+    <span class="s1">Valor</span>
+    <span class="s1 ml-full">{{ planta?.valor | currency:'R$' }}</span>
+  </div>
+</div>

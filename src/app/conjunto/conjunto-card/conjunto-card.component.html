@@ -1,0 +1,35 @@
+<div class="topo pa8 w-100">
+  <mat-checkbox *ngIf="multi" [(ngModel)]="selecionado" class="mr8"></mat-checkbox>
+</div>
+<div class="imagem ma8">
+  <mat-icon>domain</mat-icon>
+</div>
+<div *ngIf="conjunto?.id" class="conteudo br5 pl8 pr8 pb16">
+  <div class="nome ml8 mr8 center mb4">
+    <span class="s3">{{ conjunto?.nome || (conjunto?.id && 'Id '+ conjunto?.id)  }}</span>
+  </div>
+  <div class="status mb8">
+    <div class="s1 bg-amarelo pt4 pb4 pl8 pr8 br5 mb8"
+      *ngIf="(statusConjuntoService.get(conjunto.statusConjuntoId) | async) as u">
+      {{ u?.nome }}
+    </div>
+  </div>
+  <div *ngIf="conjunto.pavimentos as valor" class="info ml8 mr8">
+    <span class="s1">Pavimentos</span>
+    <span class="s1 ml-full">{{ valor }}</span>
+  </div>
+  <div *ngIf="conjunto.elevadores as valor" class="info ml8 mr8">
+    <span class="s1">Elevadores</span>
+    <span class="s1 ml-full">{{ valor }}</span>
+  </div>
+  <div *ngIf="conjunto.unidadesPorPavimento as valor" class="info ml8 mr8">
+    <span class="s1">Unidades p/ pavimento</span>
+    <span class="s1 ml-full">{{ valor }}</span>
+  </div>
+  <div *ngIf="planta as valor" class="info ml8 mr8">
+    <span class="s1">Plantas</span>
+    <span class="s1 ml-full">{{ valor }}</span>
+  </div>
+
+
+</div>

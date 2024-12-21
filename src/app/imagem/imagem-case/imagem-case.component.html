@@ -1,0 +1,64 @@
+<div class="conteudo br5">
+
+  <div class="titulo fw500 pa16 s2 flex-center" >
+    <mat-checkbox *ngIf="multi" [(ngModel)]="selecionado" class="mr8"></mat-checkbox>
+    <!-- <input type="checkbox" [(ngModel)]="checked" name="" id=""> -->
+    <span class="s3" *ngIf="titulo">
+      {{ titulo }}
+    </span>
+  </div>
+  <div class="imagem">
+
+    <img *ngIf="!imagem?.arquivo" src="../../../assets/imagem-placeholder.png" alt="placeholder" style="width: 50px;">
+
+    <!-- <img *ngIf="imagem?.arquivo" [src]="'http://localhost:5000/imagens/' + imagem?.arquivo" [alt]="imagem?.descricao" -->
+    <img *ngIf="imagem?.arquivo" [src]="environment.SOURCE_IMAGEM_ROOT + imagem?.arquivo"
+      [title]="imagem?.descricao">
+
+
+    <div class="acoes branco" *ngIf="visualizar || enviar || remover">
+      <!-- <button matTooltip="Visualizar" [matTooltipShowDelay]='500' *ngIf="visualizar && imagem?.id"
+        class="branco btn visualizar">
+        <mat-icon class="branco">zoom_out_map</mat-icon>
+      </button> -->
+      <label [for]="'descricao' + inputId" matTooltip="Descrição" [matTooltipShowDelay]='500' *ngIf="imagem?.id"
+        class="branco btn descricao">
+        <mat-icon class="branco">subject</mat-icon>
+      </label>
+      <label [for]="'upload' + inputId" matTooltip="Enviar" [matTooltipShowDelay]='500' *ngIf="enviar"
+        class="branco btn enviar">
+        <mat-icon class="branco">cloud_upload</mat-icon>
+      </label>
+      <button matTooltip="Remover" [matTooltipShowDelay]='500' *ngIf="remover && imagem?.id" class="branco btn remover"
+        (click)="excluir()">
+        <mat-icon class="branco">delete</mat-icon>
+      </button>
+    </div>
+
+  </div>
+  <div class="progresso" *ngIf="progresso != null || progresso != undefined">
+    <div class="barra bg-amarelo" [ngStyle]="{'width': progresso + '%' }"></div>
+  </div>
+  <input [matTooltip]="imagem.descricao" (blur)="put()" [name]="'descricao' + inputId" [(ngModel)]="imagem.descricao"
+    [id]="'descricao' + inputId" class="descricao ma16" placeholder="descrição" *ngIf="imagem?.id && progresso == null">
+</div>
+
+<!-- {{ this.control?.errors.required | json }}
+  {{ this.control?.status | json }} -->
+<!-- {{ this.control?. | json }} -->
+
+<div class="" *ngIf="produtoId">
+
+  <input class="none" type="file" [name]="'upload' + inputId" [id]="'upload' + inputId"
+    (change)="arquivosUploadParaEditar = getFileArray($event.target.files)">
+  <app-imagem-editor *ngIf="arquivosUploadParaEditar?.length" [(arquivos)]="arquivosUploadParaEditar"
+    (resultado)="enviarArquivo($event[0]); arquivosUploadParaEditar = []"></app-imagem-editor>
+
+</div>
+
+<div class="pa16 w-100 vermelho s1 fw600" *ngIf="this.control?.errors?.required && progresso == null">
+  * Insira uma imagem
+</div>
+<div class="pa16 w-100 amarelo s1 fw600" *ngIf="progresso != null">
+  Enviando {{ progresso }}%
+</div>

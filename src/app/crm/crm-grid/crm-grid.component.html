@@ -1,0 +1,56 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Envio para CRM</span>
+    <!-- <div class="ml-full">
+      <button mat-button class="ml8" >Novo</button>
+      <button mat-button class="ml8" >Salvar</button>
+    </div> -->
+  </div>
+  <div class="grid-infos pt16">
+    <form (submit)="novo(form.value.produtoId, form.value.crmId, form.value.codigo)" [ngClass]="{ 'form-submitted': f.submitted}" [formGroup]="form" #f="ngForm"
+      class="inserir ma8 w-100">
+      <input type="hidden" formControlName="produtoId" [(ngModel)]="produtoId" [value]="produtoId">
+
+      <mat-form-field class="mr8" appearance="outline">
+        <mat-label>CRM</mat-label>
+        <mat-select required formControlName="crmId">
+          <mat-option *ngFor="let tipo of listaCrms() | async" [value]="tipo.id">
+            {{ tipo.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mr8" appearance="outline">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="codigo" placeholder="Ex. Churrasqueira Gourmet">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <button type="submit" mat-ripple class="press adicionar-input bg-branco azul mb16 pa16 br5">
+        <mat-icon>add</mat-icon>
+        <!-- <span>inserir</span> -->
+      </button>
+
+    </form>
+
+    <div class="pa4 w-100 flex-center flex-wrap">
+
+      <div class="flex-center flex-middle ma4 pl8 borda-cinza  br5" *ngFor="let item of vinculos">
+        <div class="s3 pa4 pl8 mr8">
+          <div class="s3 mt4">{{ (crmService.get(item.crmid) | async)?.nome }}</div>
+          <div class="s1 mb4 fw300"> {{ item.codigo }} </div>
+        </div>
+        <div class="ml8 mr8">
+          <mat-slide-toggle (change)="alterar(item)" name="aa" [(ngModel)]="item.principal" >
+            Principal
+          </mat-slide-toggle>
+        </div>
+        <button (click)="remover(item)" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+</div>

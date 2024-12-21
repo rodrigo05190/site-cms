@@ -1,0 +1,101 @@
+<div class="conteudo bg-branco lista borda-cinza br5 quadro">
+
+  <div class="topo flex-top w-100">
+    <span class="s4 cinza fw600">Quantidade de Conversões
+
+    </span>
+    <div class="ml-full"></div>
+    <!-- <button mat-stroked-button color="primary" routerLink="/produto">Ir para empreendimentos</button> -->
+  </div>
+
+  <div class="flex-center w-100 mt16 datas pl8">
+    <!--
+      <mat-form-field class="ml8 mr8" >
+      <mat-label>Filtrar por</mat-label>
+      <mat-select>
+        <mat-option value="acessos">Acessos</mat-option>
+        <mat-option value="conversoes">Conversões</mat-option>
+      </mat-select>
+    </mat-form-field>
+  -->
+
+
+    <!-- <mat-form-field appearance="outline">
+    <mat-label>Data Inicial</mat-label>
+    <input matInput (change)="ngOnInit()" [matDatepicker]="picker" [(ngModel)]="dataInicio" placeholder="Data Inicial">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker touchUi #picker></mat-datepicker>
+  </mat-form-field> -->
+
+
+    <mat-form-field appearance="outline" class="mr8">
+      <mat-label>Data Inicial</mat-label>
+      <input matInput (change)="ngOnInit()" [(ngModel)]="dataInicio" type="datetime-local" placeholder="Data Inicial">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="mr8">
+      <mat-label>Data Final</mat-label>
+      <input matInput (change)="ngOnInit()" [(ngModel)]="dataFim" type="datetime-local" placeholder="Data Inicial">
+    </mat-form-field>
+    <!-- {{ dataInicio }}
+      <br>
+      {{ dataFim }} -->
+
+
+  </div>
+
+
+
+  <div class="flex-row mt16 justify-between w-100 pl8 pr8 pb16" *ngIf="!!itens else spin">
+
+
+    <div class="flex-column ma8 box-dados" *ngFor="let item of itens">
+      <div class="cinza s2 center flex-row" style="align-items: center; height: 20px;">
+        {{ item.destino }}
+
+        <mat-icon *ngIf="item.destinoId==3"
+          [matTooltip]="'Na aplicação mobile, clique no botão Whatsapp já é considerado conversão.'"
+          matTooltipPosition="after" class="cinza ml8">info</mat-icon>
+
+      </div>
+      <div class="cinza s10 fw500 center mt8 mb8">{{ item.quantidade }}</div>
+
+      <div class="flex-row justify-center w-100">
+
+
+        <div class="balao" *ngIf="item.origem?.length">
+          <button class="botao brt bg-cinza-claro">
+            <mat-icon>devices</mat-icon>
+          </button>
+          <div class="flex-column pa16 bg-branco cinza caixa sombra-2 borda-cinza br5">
+            <div class="s2 fw500 mb16 mt8">Origem</div>
+            <div class="s1 fw500 mb8" *ngFor="let a of item.origem">{{ a.nome }}: {{ a.quantidade }}</div>
+          </div>
+        </div>
+
+        <div class="balao" *ngIf="item.produto?.length">
+          <button class="botao brt bg-cinza-claro">
+            <mat-icon>house</mat-icon>
+          </button>
+          <div class="flex-column pa16 bg-branco cinza caixa sombra-2 borda-cinza br5">
+            <div class="s2 fw500 mb16 mt8">Empreendimento</div>
+            <div class="s1 fw500 mb8" *ngFor="let a of item.produto">{{ a.nome }}: {{ a.quantidade }}</div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <ng-template #spin>
+    <div class="flex-row w-100 justify-center" style="align-items: center; flex: 1;">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+
+
+
+</div>

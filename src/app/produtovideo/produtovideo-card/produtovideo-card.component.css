@@ -1,0 +1,28 @@
+.case {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.titulo {
+  display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+height: 36px;
+}
+
+.thumb img{
+  width: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+
+button {
+  cursor: pointer;
+}
+

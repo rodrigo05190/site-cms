@@ -1,0 +1,9 @@
+:host {
+  position: relative;
+  overflow: hidden;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+}

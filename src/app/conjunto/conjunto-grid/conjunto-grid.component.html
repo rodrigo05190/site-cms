@@ -1,0 +1,22 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Conjunto</span> <span *ngIf="conjuntos.length as valor" class="ml8 s4 cinza fw300">({{ valor }})</span>
+
+    <div class="botoes grid-infos ml-full">
+
+
+      <div class="mr8"></div>
+      <button color="primary" mat-button [routerLink]="'/produto/' + produto.id + '/conjunto/novo'" >Adicionar</button>
+    </div>
+  </div>
+
+  <div class="conteudo">
+    <div class="grid-infos">
+
+      <app-conjunto-card *ngFor="let item of conjuntos" [routerLink]='"./conjunto/" + item.id' [conjunto]="item">
+      </app-conjunto-card>
+    </div>
+  </div>
+
+
+</div>

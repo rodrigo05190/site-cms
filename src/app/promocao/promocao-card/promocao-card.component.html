@@ -1,0 +1,12 @@
+<div class="conteudo pa16" >
+
+  <div class="imagem">
+    <img src="../../../assets/promocao.png" alt="{{promocao.identificacao}}">
+  </div>
+
+  <div class="mt16 s2 center">{{promocao.identificacao}}</div>
+</div>
+
+  <app-capa-excluir (click)="remover.emit(promocao.id)" *ngIf="produto != null" desvincular></app-capa-excluir>
+
+

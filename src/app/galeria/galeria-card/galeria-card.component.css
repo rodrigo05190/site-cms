@@ -1,0 +1,27 @@
+:host {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+:host:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+
+.imagem mat-icon {
+  height: 64px !important;
+  line-height: 64px !important;
+  font-size: 64px !important;
+  vertical-align: middle;
+  width: 64px;
+  opacity: .4;
+}
+
+:host.ativo .imagem mat-icon {
+  color: #FFCB31;
+  opacity: 1;
+}

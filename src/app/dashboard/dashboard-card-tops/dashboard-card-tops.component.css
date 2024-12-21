@@ -1,0 +1,19 @@
+:host {
+  overflow: hidden;
+}
+.conteudo {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding-bottom: 0 !important;
+}
+
+.mat-button-toggle-label-content {
+  line-height: 24px;
+}
+
+mat-form-field {
+  flex: 1;
+}
+
+

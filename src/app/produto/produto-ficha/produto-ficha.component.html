@@ -1,0 +1,287 @@
+<div class="w-100 flex-center center pa32" *ngIf="(!produto?.id && !novo)">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="inside w-100" *ngIf="produto?.id || novo">
+
+
+  <div class="flex-center">
+
+    <div class="s7 fw600 ma16">{{ produto.nome }}</div>
+
+    <div class="an bg-verde branco pl8 pr8 pt4 pb4 br5  s1 fw400"
+      [ngClass]="{'bg-verde': produto.ativo, 'bg-cinza': !produto.ativo}">
+      {{ produto.ativo ? 'ativo' : 'inativo' }}
+    </div>
+
+    <div class="cinza s2 ml16 mr16">
+      {{ linkProduto }}
+    </div>
+  </div>
+  <div class="separador mt16 mb16"></div>
+
+  <form (submit)="salvar()" #f="ngForm" class="quadro">
+
+    <div class="topo">
+      <div class="s5 fw600">Dados do empreendimento</div>
+
+      <div class="botoes grid-infos ml-full">
+
+        <button (click)="ativarToggle()" color="warn" *ngIf="produto.ativo" mat-button type="button">Desativar</button>
+
+        <button (click)="ativarToggle()" color="accent" *ngIf="!produto.ativo" mat-button type="button">Ativar</button>
+
+        <div class="mr8"></div>
+
+        <button color="primary" type="submit" mat-button>Salvar</button>
+
+      </div>
+
+    </div>
+
+    <div class="conteudo">
+
+      <div class="grid-infos">
+
+        <input type="text" hidden [(ngModel)]="produto.dataCriacao" name="dataCriacao" id="dataCriacao">
+        <input type="text" hidden [(ngModel)]="produto.id" name="id" id="id">
+        <input type="text" hidden [(ngModel)]="produto.ativo" name="ativo" id="ativo">
+        <mat-form-field class="campo ma8" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput required type="text" [(ngModel)]="produto.nome" name="nome"
+            placeholder="Ex. axis-vila-mariana">
+          <!-- <span matSuffix>m²</span> -->
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="campo ma8" appearance="outline">
+          <mat-label>Chave</mat-label>
+          <input matInput required type="text" [(ngModel)]="produto.chave" name="chave"
+            placeholder="Ex. axis-vila-mariana">
+          <!-- <span matSuffix>m²</span> -->
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="campo ma8" appearance="outline">
+          <mat-label>Previsão de Entrega</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="produto.previsaoEntrega" name="previsaoEntrega"
+            placeholder="Ex. axis-vila-mariana">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="campo ma8" appearance="outline">
+          <mat-label>Cnpj</mat-label>
+          <input matInput type="text" [(ngModel)]="produto.cnpj" name="cnpj" placeholder="Ex. 11.777.777/1111-77">
+        </mat-form-field>
+        
+        <mat-form-field class="campo ma8" appearance="outline">
+          <mat-label>Área do terreno total</mat-label>
+          <input matInput type="number" [(ngModel)]="produto.areaTerreno" name="areaTerreno" placeholder="1470">
+          <span matSuffix>m²</span>
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+
+
+        <mat-form-field class="campo ma8" appearance="outline">
+          <mat-label>Empreendimento Id Mega</mat-label>
+          <input matInput type="number" [(ngModel)]="produto.idEmpreendimentoMega" name="idEmpreendimentoMega" placeholder="Dado para relacionamento com o ERP Mega">
+        </mat-form-field>
+
+        <mat-form-field class="campo mr8" appearance="outline">
+          <mat-label>Status de venda</mat-label>
+          <mat-select [(ngModel)]="produto.statusVendaId" name="statusVendaId">
+            <mat-option [value]="null">
+              Nenhum
+            </mat-option>
+            <mat-option *ngFor="let item of statusVendaService.getAll() | async" [value]="item.id">
+              {{ item.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="grid-infos full">
+          <mat-form-field class="campo ma8" appearance="outline">
+            <mat-label>Sobre</mat-label>
+            <textarea [(ngModel)]="produto.sinopse" name="sinopse" matInput
+              placeholder="Ex. Empreendimento com as caracteristicas..."></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="campo ma8" appearance="outline">
+            <mat-label>Slogan</mat-label>
+            <textarea [(ngModel)]="produto.slogan" name="slogan" matInput
+              placeholder="Ex. Melhor empreendimento da região..."></textarea>
+          </mat-form-field>
+
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+  <app-crm-grid [produtoId]="this.produto.id"
+    *ngIf="produto?.id"></app-crm-grid>
+
+  <app-statusobra-grid (novoId)="this.produto.evolucaoObraId = $event; salvar()"
+    [evolucaoObraId]="produto?.evolucaoObraId" *ngIf="produto?.id"></app-statusobra-grid>
+
+  <app-configuracao-interface-produto *ngIf="produto?.id" [produtoId]="produto.id"></app-configuracao-interface-produto>
+
+
+  <app-corretor-ficha *ngIf="produto?.id" [corretorId]="produto.corretorId" (novo)="null"
+    (salvo)="this.produto.corretorId = $event; salvar()"></app-corretor-ficha>
+
+
+  <app-endereco-card *ngIf="produto?.id" [enderecoId]="produto.enderecoId" (novo)="null"
+    (salvo)="this.produto.enderecoId = $event; salvar()"></app-endereco-card>
+    
+  <app-endereco-estande *ngIf="produto?.id" [enderecoEstandeId]="produto.enderecoEstandeId" (novo)="null"
+  (salvo)="this.produto.enderecoEstandeId = $event; salvar()"></app-endereco-estande>
+
+  <app-conjunto-grid *ngIf="produto?.id" [produto]="produto"></app-conjunto-grid>
+
+  <app-hotsite-ficha *ngIf="produto?.id" [produtoId]="produto.id"></app-hotsite-ficha>
+
+  <app-produtovideo-grid *ngIf="produto?.id" [produtoId]="produto.id"></app-produtovideo-grid>
+
+  <app-areacomum-ficha *ngIf="produto?.id" [produtoId]="produto.id"></app-areacomum-ficha>
+
+  <app-seo-produto-card *ngIf="produto?.id" [produtoId]="produto.id"></app-seo-produto-card>
+
+  <app-books-card *ngIf="produto?.id" [produtoId]="produto.id"></app-books-card>
+
+  <app-blog-card *ngIf="produto?.id" [produto]="produto"></app-blog-card>
+
+
+
+  <div class="quadro" style="min-height: 400px;" *ngIf="produto?.id">
+    <div class="topo">
+      <span class="s5 fw600">
+        Promoções <span class="ml8 s4 cinza fw300 ng-star-inserted">{{promocao.length}}</span>
+      </span>
+    </div>
+
+    <div class="grid-infos">
+
+      <div style="min-height: 234px;" mat-ripple class="add-novo ma8 pa16 br5" (click)="janelaPromocoes = true">
+        <mat-icon>link</mat-icon>
+        <!-- <div class="s3 center mt16">vincular</div> -->
+      </div>
+      <app-promocao-card *ngFor="let item of promocao" [produto]="produto" [promocao]="item"
+        (remover)="removerPromocao($event)"></app-promocao-card>
+
+    </div>
+
+    <div class="janelaMultiplos w-100" *ngIf="janelaPromocoes">
+      <div class="fundo" (click)="janelaPromocoes = false"></div>
+      <div class="quadro">
+        <mat-form-field class="ma8" appearance="outline">
+          <mat-label>Produto:</mat-label>
+          <mat-select [(ngModel)]="promocaoSelecionada" name="produtoSimilaSelecionado">
+            <mat-option [value]="null">{{promocaoSelecionada == null ? "Selecionar": ""}}</mat-option>
+            <mat-option *ngFor="let promo of promocoes" [value]="promo"> {{promo.identificacao}}
+            </mat-option>
+          </mat-select>
+
+
+        </mat-form-field>
+        <div class="botoes grid-infos" *ngIf="!carregandoPromocoes">
+          <button color="warm" mat-button (click)="janelaPromocoes = false">Cancelar</button>
+
+          <div class="ml-full"></div>
+          <button color="primary" mat-button (click)="novoProdutoPromocao()">Vincular</button>
+        </div>
+
+        <div class="w-100 center azul s2" *ngIf="carregandoPromocoes">Carregando</div>
+      </div>
+    </div>
+  </div>
+
+
+  <app-projetista-ficha *ngIf="produto?.id" [produtoId]="produto.id"></app-projetista-ficha>
+
+  <app-produto-imagem-oficial-card *ngIf="produto?.id" [produtoId]="produto.id"></app-produto-imagem-oficial-card>
+
+  <div class="quadro" style="min-height: 400px;" *ngIf="produto?.id">
+    <div class="topo">
+      <span class="s5 fw600">Produtos Similares</span>
+      <div class="botoes grid-infos ml-full">
+        <button type="button" (click)="janelaSimilar = true" mat-button>Novo</button>
+
+      </div>
+    </div>
+    <div class="conteudo">
+      <div class="grid-infos ">
+        <app-produto-card *ngFor="let similar of similares" [produto]="similar" acao="remover"
+          ngSortGridGroup="jdsaomsadjsda" ngSortgridItem [ngSortGridItems]='similares'
+          (removido)="removerSimilar($event)" (sorted)="a($event)" excluir>
+        </app-produto-card>
+      </div>
+    </div>
+
+
+
+    <div class="janelaMultiplos w-100" *ngIf="janelaSimilar">
+      <div class="fundo" (click)="janelaSimilar = false"></div>
+      <div class="quadro">
+        <mat-form-field class="ma8" appearance="outline">
+          <mat-label>Produto:</mat-label>
+          <mat-select [(ngModel)]="produtoSimilaSelecionado" name="produtoSimilaSelecionado">
+            <mat-option [value]="null">{{produtoSimilaSelecionado == null ? "Selecionar": ""}}</mat-option>
+            <mat-option *ngFor="let produtoSimilar of produtosSimilares" [value]="produtoSimilar">
+              {{produtoSimilar.nome}}
+            </mat-option>
+          </mat-select>
+
+
+        </mat-form-field>
+        <div class="botoes grid-infos" *ngIf="!carregandoSimilar">
+          <button color="warm" mat-button (click)="janelaSimilar = false">Cancelar</button>
+
+          <div class="ml-full"></div>
+          <button color="primary" mat-button (click)="adicionarSimilar()">Adicionar</button>
+        </div>
+
+        <div class="w-100 center azul s2" *ngIf="carregandoSimilar">Carregando</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- <div class="quadro">
+    <div class="topo">
+      <span class="s5 fw600">Central de Vendas</span>
+    </div>
+    <div class="conteudo">
+      <div class="grid-infos ">
+
+        <div mat-ripple class="add-novo ma8 pa16 br5" style="width: 300px;">
+          <mat-icon>link</mat-icon>
+        </div>
+
+        <app-central-venda-card></app-central-venda-card>
+        <app-central-venda-card nome="Vila Mariana"></app-central-venda-card>
+
+      </div>
+    </div>
+  </div> -->
+
+  <app-galeria-grid *ngIf="produto?.id" [produtoId]="produto.id"></app-galeria-grid>
+
+  <div class="quadro" *ngIf="produto?.id">
+    <div class="topo">
+      <span class="s5 fw600">Diferenciais</span>
+    </div>
+
+    <div class="conteudo">
+      <div class="grid-infos">
+
+
+      </div>
+
+      <app-diferencial-ficha [produtoId]="produto.id"></app-diferencial-ficha>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,62 @@
+import { AreaComum } from './AreaComum';
+import { CardHome } from './CardHome';
+import { CentralVendaProduto } from './CentralVendaProduto';
+import { Conjunto } from './Conjunto';
+import { Contato } from './Contato';
+import { DiferencialProduto } from './DiferencialProduto';
+import { Endereco } from './Endereco';
+import { EnderecoEstande } from './EnderecoEstande';
+import { GaleriaProduto } from './GaleriaProduto';
+import { Hotsite } from './Hotsite';
+import { ImagemProduto } from './ImagemProduto';
+import { ProdutoPromocao } from './ProdutoPromocao';
+import { Projetista } from './Projetista';
+import { Corretor } from './Corretor';
+import { SeoProduto } from './SeoProduto';
+import { StatusObra } from './StatusObra';
+import { StatusVenda } from './StatusVenda';
+
+export interface Produto {
+  id: number;
+  evolucaoObraId: number | null;
+  nome: string;
+  areaTerreno: number | null;
+  sinopse: string;
+  ativo: boolean;
+  dataCriacao: string;
+  dataAlteracao: string | null;
+  enderecoId: number | null;
+  enderecoEstandeId: number | null;
+  corretorId: number | null;
+  standId: number | null;
+  publicado: boolean | null;
+  chave: string;
+  slogan: string;
+  numeroDeTorres: string,
+  numeroTotalDeUnidades:string,
+  statusVendaId: number;
+  chatCode: string;
+  cnpj: string;
+  relevancia: number;
+  statusObraId: number | null;
+  previsaoEntrega: string | null;
+  idProdutoLegado: number | null;
+  blogPostId: number | null;
+  idEmpreendimentoMega: number | null;
+  endereco: Endereco;
+  enderecoEstande: EnderecoEstande;
+  statusObra: StatusObra;
+  statusVenda: StatusVenda;
+  hotsite: Hotsite;
+  imagemProduto: ImagemProduto;
+  seoProduto: SeoProduto;
+  areaComum: AreaComum[];
+  cardHome: CardHome[];
+  centralVendaProduto: CentralVendaProduto[];
+  conjunto: Conjunto[];
+  contato: Contato[];
+  diferencialProduto: DiferencialProduto[];
+  galeriaProduto: GaleriaProduto[];
+  produtoPromocao: ProdutoPromocao[];
+  projetista: Projetista[];
+}

@@ -1,0 +1,59 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 3;
+  background: #5D5D5D;
+  width: 260px;
+  flex: 0 0 260px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+:host::-webkit-scrollbar {
+  width: 0px;
+}
+
+:host::-webkit-scrollbar-thumb {
+  background: transparent;
+  width: 0px;
+}
+
+:host:hover::-webkit-scrollbar-thumb {
+  /* background: unset; */
+}
+
+div {
+  font-size: 16px !important;
+  padding: 0 16px;
+}
+
+div.lista {
+  padding: 0 0;
+}
+
+mat-list-item:not([disabled]):not(.desativado) {
+  transition: background .3;
+  cursor: pointer;
+}
+
+mat-list-item:not([disabled]):not(.desativado):hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  /* justify-content: center; */
+  margin-left: 30px;
+  /* margin-bottom: 8px; */
+}
+
+.logo img {
+  height: 36px;
+}
+
+mat-list-item a {
+  display: flex;
+  font-size: 16px !important;
+  padding: 0 16px;
+  text-decoration: none;
+}

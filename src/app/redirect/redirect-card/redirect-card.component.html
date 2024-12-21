@@ -1,0 +1,25 @@
+<form class="grid-infos borda-cinza flex-center br5 bg-branco pa8 w-100" (submit)="salvar()">
+  <!-- <div class="grid-infos"> -->
+  <div class="w-100 pb8 pl8 pr8 pt16 azul s3 fw600" *ngIf="novo">
+    Criar novo
+  </div>
+
+  <mat-form-field class="ma8 campo" appearance="outline">
+    <mat-label>Origem</mat-label>
+    <input matInput required [(ngModel)]="redirect.origem" name="origem" type="text" class="bg-branco" placeholder="Url Origem">
+    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+  </mat-form-field>
+
+  <mat-form-field class="ma8 campo" appearance="outline">
+    <mat-label>Destino</mat-label>
+    <input matInput required [(ngModel)]="redirect.destino" name="destino" type="text" class="bg-branco" placeholder="Url Destino">
+    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+  </mat-form-field>
+  <div class="w-100 grid-infos flex-center center">
+    <button style="width: 100px;" type="button" (click)="excluir()" color="warn" mat-button>{{ novo ? 'cancelar' : 'excluir' }}</button>
+    <!-- <div class="ml16"></div> -->
+    <button style="width: 100px;" type="submit" color="primary" mat-button >{{ novo ? 'novo' : 'salvar' }}</button>
+  </div>
+  <!-- </div> -->
+
+</form>

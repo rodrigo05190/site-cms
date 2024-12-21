@@ -1,0 +1,38 @@
+<div class="quadro">
+  <div class="topo">
+      <span class="s5 fw600">
+          Projetistas
+      </span>
+
+      <div class="botoes grid-infos ml-full">
+        <button color="primary" (click)="Salvar()" mat-button>Salvar</button>
+      </div>
+  </div>
+
+<!--
+      <div mat-ripple class="add-novo ma8 pa16 br5"> -->
+
+        <mat-form-field class="mr8" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input matInput required name="nome" [(ngModel)]="projetista.nome"  placeholder="Nome">
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+
+
+        <mat-form-field class="mr8" appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select required name="tipoId" [(ngModel)]="projetista.tipoId">
+            <mat-option *ngFor="let projetistaTipo of projetistaTipos"   [value]="projetistaTipo.id">
+              {{ projetistaTipo.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      <!-- </div> -->
+  <div class="grid-infos">
+
+      <app-projetista-card *ngFor="let item2 of projetistas" [projetistas]="projetistas" [item]="item2" [tipos]="projetistaTipos"></app-projetista-card>
+
+  </div>
+</div>

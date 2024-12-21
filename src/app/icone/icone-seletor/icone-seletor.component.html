@@ -1,0 +1,15 @@
+<div class="imagem imagem-selecionada br5 borda-cinza mb16 pd8" (click)="aberto = !aberto">
+  <img *ngIf="imagemSelecionada" [src]="environment.SOURCE_IMAGEM_ROOT + imagemSelecionada?.arquivo" alt="a" title="a">
+  <mat-icon class="" *ngIf="!imagemSelecionada?.arquivo">image</mat-icon>
+</div>
+<div class="conteudo br5 borda-cinza pd8 bg-branco sombra-2" [ngStyle]="{'display': aberto ? null : 'none' }">
+  <!-- <div class="topo full grid-infos">
+    <mat-icon class="ma4 brt hv-bg-cinza-muito-claro cinza press ml-full">close</mat-icon>
+  </div> -->
+
+  <div class="imagem ma8 br5" *ngFor="let imagem of imagens" (click)="value = imagem.id; imagemSelecionada = imagem; aberto = false"
+    [ngClass]="{'ativo': imagemSelecionada == imagem}">
+    <img [src]="environment.SOURCE_IMAGEM_ROOT + imagem.arquivo" alt="a" title="a">
+  </div>
+
+</div>

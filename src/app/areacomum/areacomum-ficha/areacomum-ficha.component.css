@@ -1,0 +1,12 @@
+.inserir {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.adicionar-input {
+  height: 51px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,7 @@
+<div class="conteudo">
+  <mat-icon>cloud_upload</mat-icon>
+  <input type="file" #fileDropRef  id="fileDropRef" [multiple]="!single" (change)="enviarArquivos($event.target.files)">
+  <div class="s2">Arraste e solte ou <span class="fw600">clique</span> e selecione o arquivo</div>
+  <!-- <div class="s2 ma4 opacity-50">ou</div>
+  <label for="fileDropRef" class="pt8 pb8 pl16 pr16 mt4 mb8 bg-azul brt branco hv-azul hv-bg-amarelo">Procurar manualmente</label> -->
+</div>

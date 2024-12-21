@@ -1,0 +1,15 @@
+.bairro > .mat-expanded {
+  background: #d3ffca;
+}
+
+.cidade > .mat-expanded {
+  background: #caddff;
+}
+
+.estado > .mat-expanded {
+  background: #ffe8ca;
+}
+
+.pais > .mat-expanded {
+  background: #ffcaca;
+}

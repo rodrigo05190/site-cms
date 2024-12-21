@@ -1,0 +1,31 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Videos</span>
+  </div>
+  <div class="conteudo">
+
+    <div class="inserir">
+
+      <mat-form-field class="mr8" style="width: 300px;" appearance="outline">
+        <mat-label>WatchId do Video (youtube)</mat-label>
+        <input matInput [(ngModel)]="watchIdInsert" name="watchid" type="text" placeholder="LXb3EKWsInQ">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <button (click)="inserir(watchIdInsert)" type="submit" mat-ripple
+        class="press adicionar-input bg-branco azul mb16 pa16 br5">
+        <mat-icon>add</mat-icon>
+        <!-- <span>inserir</span> -->
+      </button>
+
+    </div>
+
+    <div class="grid-infos">
+
+      <app-produtovideo-card (itemRemovido)="itemRemovido($event)" ngSortGridGroup="gridProdutoVideos" ngSortgridItem [ngSortGridItems]='listaVideos'
+        (sorted)="sorted($event)" *ngFor="let video of listaVideos" [video]="video"></app-produtovideo-card>
+
+    </div>
+
+  </div>
+</div>

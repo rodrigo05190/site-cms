@@ -1,0 +1,80 @@
+<div class="imagem" *ngIf="modo != 'linha'">
+  <div *ngIf="produto.imagemProduto?.logo?.arquivo as arquivo" class="logo br5">
+    <img loading="lazy" [src]="environment.SOURCE_IMAGEM_ROOT + arquivo" alt="logo">
+  </div>
+  <img loading="lazy" *ngIf="produto.imagemProduto?.banner?.arquivo as arquivo" class="fundo"
+    [src]="environment.SOURCE_IMAGEM_ROOT + arquivo" [alt]="arquivo">
+</div>
+
+<div class="painel bg-branco pa16 br5" [ngClass]="{'linha': modo=='linha'}">
+
+  <div class="flex-center mb16" [ngStyle]="{'order': modo=='linha'?9:'', 'margin': modo=='linha'?0:''}">
+    <div *ngFor="let item of produto.statusConjunto" class="tag-status mr8"
+      [matTooltip]="item.quantidade + '/' + produto.conjuntoQuantidade + ' ' + item.nome">
+      <img *ngIf="item.id == 1" src="../../../assets/icon-predio.svg" alt="status">
+      <img *ngIf="item.id == 2" src="../../../assets/icon-predio.svg" alt="status">
+      <img *ngIf="item.id == 3" src="../../../assets/icon-planta.svg" alt="status">
+      <img *ngIf="item.id == 4" src="../../../assets/icon-construcao.svg" alt="status">
+      <img *ngIf="item.id == 5" src="../../../assets/icon-pronto.svg" alt="status">
+    </div>
+
+    <div class="ml-full"></div>
+    <div *ngIf="acao=='editar'" [routerLink]="'/produto/'+produto.id"
+      class="flex-center editar s0 br5 fw600 botao-1 azul pl8 pr8 pt4 pb4 press">
+      <mat-icon class="mr4" [inline]="true">edit</mat-icon>
+      Editar
+    </div>
+    <div *ngIf="acao=='remover'" (click)="removido.emit(produto.id)"
+      class="flex-center editar s0 br5 fw600 botao-1 azul pl8 pr8 pt4 pb4 press">
+      <mat-icon class="mr4" [inline]="true">edit</mat-icon>
+      Remover
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div class="logo-linha mr16 br5 oh" *ngIf="modo == 'linha'">
+    <img *ngIf="produto.imagemProduto?.logo?.arquivo"
+      [src]="environment.SOURCE_IMAGEM_ROOT + produto.imagemProduto?.logo?.arquivo"
+      [alt]=" produto.imagemProduto?.logo?.descricao" [title]=" produto.imagemProduto?.logo?.descricao">
+
+    <mat-icon *ngIf="!produto.imagemProduto?.logo?.arquivo" class="" title="Não possui logo">star</mat-icon>
+  </div>
+
+  <div class="nome s3 fw900 " [ngClass]="{'mt16 mb16': modo != 'linha'}" [ngStyle]="{'flex': modo=='linha'?'1 1 100%':''}">{{ produto?.nome }}</div>
+
+  <div class="lista" *ngIf="modo == 'card'">
+    <div *ngIf="produto.areaTerreno as valor" class="cinza flex-top s1 fw500 mb8">Área Terreno: <div
+        class="preto ml8 fw400">{{ valor }}m²</div>
+    </div>
+    <div *ngIf="produto.conjuntoQuantidade as valor" class="cinza flex-top s1 fw500 mb8">Conjuntos: <div
+        class="preto ml8 fw400">{{ valor }}</div>
+    </div>
+    <div *ngIf="produto.bairro as valor" class="cinza flex-top s1 fw500 mb8">Bairro: <div class="preto ml8 fw400">
+        {{ valor }}</div>
+    </div>
+    <div *ngIf="produto.cidade as valor" class="cinza flex-top s1 fw500 mb8">Cidade: <div class="preto ml8 fw400">
+        {{ valor }}</div>
+    </div>
+  </div>
+
+  <div class="w-100 s0 fw600 mt-full flex-center pt16 lista-de-tags">
+    <div *ngIf="produto.ativo" class="bg-verde branco pl8 pr8 pt4 nw pb4 mr8 br5 flex-center">ativo</div>
+    <div *ngIf="!produto.ativo" class="bg-vermelho branco pl8 pr8 pt4 nw pb4 mr8 br5 flex-center">inativo</div>
+
+    <div *ngIf="produto.statusVenda as sv" [ngClass]="{'bg-amarelo-escuro': sv.id == 2, 'bg-azul': sv.id != 2}"
+      class="bg-amarelo-escuro pl8 pr8 pt4 nw pb4 mr8 flex-center branco br5 fw600 s0">
+      <img *ngIf="sv.id == 2" class="mr8" src="../../../assets/ultimas-unidades.svg" alt="u">
+      <img *ngIf="sv.id != 2" class="mr8" src="../../../assets/star.svg" alt="u">
+      {{ sv.nome }}
+    </div>
+
+    <!-- <div class="bg-azul pl8 pr8 pt4 pb4 flex-center branco br5 s0"> <img class="mr8" src="../../../assets/star.svg" alt="u"> 100% vendido</div> -->
+
+    <div *ngIf="produto.promocao" matTooltip="Promoção"
+      class="bg-azul-claro branco pl8 pr8 pt4 nw pb4 mr8 br5 flex-center"><img src="../../../assets/promocao.svg"
+        alt=""> </div>
+  </div>
+
+</div>
+
+<app-capa-excluir *ngIf="excluir != undefined" desvincular></app-capa-excluir>

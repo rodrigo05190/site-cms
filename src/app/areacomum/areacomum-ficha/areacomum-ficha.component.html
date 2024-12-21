@@ -1,0 +1,50 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Área comum</span>
+  </div>
+
+
+  <div class="conteudo pt16">
+
+    <form (submit)="novo()" [ngClass]="{ 'form-submitted': f.submitted}" [formGroup]="form" #f="ngForm" class="inserir ma8">
+      <input type="hidden" formControlName="produtoId" [(ngModel)]="produtoId" [value]="produtoId">
+      <app-icone-seletor formControlName="iconeId" [(ngModel)]="novaAreaComum.iconeId" *ngIf="icones?.length" [imagensIds]="icones" class="mr8"></app-icone-seletor>
+
+      <mat-form-field class="mr8" appearance="outline">
+        <mat-label>Tipo</mat-label>
+        <mat-select required formControlName="tipoId">
+          <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">
+            {{ tipo.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="mr8" appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <input matInput formControlName="descricao" placeholder="Ex. Churrasqueira Gourmet">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <mat-form-field class="mr8" appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input matInput formControlName="quantidade" type="number" placeholder="Ex. Churrasqueira Gourmet">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <button type="submit" mat-ripple class="press adicionar-input bg-branco azul mb16 pa16 br5">
+        <mat-icon>add</mat-icon>
+        <!-- <span>inserir</span> -->
+      </button>
+
+    </form>
+
+    <div class="grid-infos pa4">
+      <app-areacomum-card (deletou)="deletou($event)" *ngFor="let item of items" ngSortGridGroup="gridAreaComum" ngSortgridItem
+        [ngSortGridItems]='items' (sorted)="sorted($event)" [item]='item'></app-areacomum-card>
+    </div>
+
+
+
+  </div>
+
+</div>

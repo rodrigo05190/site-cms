@@ -1,0 +1,23 @@
+<div class="ma8 borda-cinza br5 bg-branco case" [title]="videoInfo?.title">
+  <ng-container *ngIf="!erro else erroTemplate">
+
+
+    <div class="thumb w-100" *ngIf="videoInfo?.thumbnail_url">
+      <img [src]="videoInfo?.thumbnail_url" alt="thumbnail">
+    </div>
+
+    <div class="pl8 pr8 mt8 mb8 titulo s2 w-100">
+      {{ videoInfo?.title }}
+    </div>
+  </ng-container>
+  <ng-template #erroTemplate>
+
+    <div class="vermelho pl8 pr8 mt8 mb8 center">Não foi possivel encontrar o video com o Watch ID: </div>
+    <div class="w-100 center">
+      {{ video?.codigoYoutube }}
+
+    </div>
+  </ng-template>
+
+  <button (click)="remover()" class="mt8 vermelho hv-branco hv-bg-vermelho s2 fw600 w-100 pa8">remover</button>
+</div>

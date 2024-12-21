@@ -1,0 +1,100 @@
+<div class="flex-center pa16">
+  <div class="s7 fw600 ">Todos empreendimentos</div>
+  <div class="ml-full"></div>
+  <button mat-flat-button color="primary" routerLink="/produto/novo">novo</button>
+</div>
+<div class="separador mt16 mb16"></div>
+
+<div class="pl8 pr8 ">
+  <div class="procurar flex-center w-100 ">
+
+    <mat-form-field class="ma8" appearance="outline">
+      <mat-label>Procurar</mat-label>
+      <input matInput [(ngModel)]="pesquisa" #t type="text" class="bg-branco" placeholder="Nome">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field class="ma8" appearance="outline">
+      <mat-label>Status Empreendimento</mat-label>
+      <mat-select [(ngModel)]="filtroStatusEmpreendimento">
+        <mat-option [value]="null">Todos</mat-option>
+        <mat-option *ngFor="let item of statusEmpreendimento" [value]="item.id">{{ item.texto }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="ma8" appearance="outline">
+      <mat-label>Status Venda</mat-label>
+      <mat-select [(ngModel)]="filtroStatusVenda">
+        <mat-option [value]="undefined">Todos</mat-option>
+        <mat-option [value]="'nenhum'">Nenhum</mat-option>
+        <mat-option *ngFor="let item of statusVenda" [value]="item.id">{{ item.texto }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div class="flex-center">
+    <div class=" cinza w-100 pa8 flex-center">
+      Buscando {{ t.value }}
+      {{ (getStatusEmpreendimentoSelecionado(filtroStatusEmpreendimento) && "com status " + getStatusEmpreendimentoSelecionado(filtroStatusEmpreendimento).texto ) || (t.value ? 'em ' : '') + 'todos empreendimentos'  }}
+      |
+      {{ listaFiltrada()?.length }} resultados
+    </div>
+    <div class="mr-full"></div>
+    <mat-slide-toggle [(ngModel)]="exibirInativos">exibir inativos</mat-slide-toggle>
+    <div class="mr32 ml-full"></div>
+    <mat-icon [matTooltip]="'Segure e arraste para ordenar \n*Não é possível ordenar com o filtro ativo'" matTooltipPosition="before" class="cinza ml8">info</mat-icon>
+    <button class="ml8 modo-visualizacao pa4  br5 bg-branco flex-center azul press"
+      (click)="modo = 'linha'" [ngClass]="{'ativo': modo == 'linha'}">
+      <mat-icon [inline]="true">view_stream</mat-icon>
+    </button>
+    <button class="ml8 modo-visualizacao pa4 br5 bg-branco flex-center azul press"
+      (click)="modo = 'card'" [ngClass]="{'ativo': modo == 'card'}">
+      <mat-icon [inline]="true">view_column</mat-icon>
+    </button>
+    <button class="ml8 modo-visualizacao pa4 br5 bg-branco flex-center azul press"
+    (click)="modo = 'card-compacto'" [ngClass]="{'ativo': modo == 'card-compacto'}">
+    <mat-icon [inline]="true">view_module</mat-icon>
+  </button>
+  </div>
+</div>
+<!-- <div class="conteudo w-100" [@listaEmpreendimentos]="items.length"> -->
+<div class="separador mt16 mb16"></div>
+
+<div class="ml16 mr16 cinza w-100 flex-center">
+
+</div>
+
+
+<div class="ma16 " *ngIf="!pesquisa && !filtroStatusEmpreendimento && !filtroStatusVenda && exibirInativos else pesquisaAtiva">
+  <div class="conteudo w-100">
+
+    <div class="w-100 flex-center center" *ngIf="!(items?.length)">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <app-produto-card [modo]="modo" ngSortGridGroup="gridProduto"
+      *ngFor="let produto of items" ngSortgridItem [ngSortGridItems]='items'
+      (sorted)="ordenados($event)" class="br5 mb8" [produto]="produto">
+    </app-produto-card>
+
+  </div>
+
+</div>
+<ng-template #pesquisaAtiva>
+
+  <div class="ma16">
+    <div class="conteudo w-100">
+
+      <div class="w-100 flex-center center" *ngIf="!(items?.length)">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <app-produto-card [modo]="modo"
+      *ngFor="let produto of listaFiltrada()" class="br5 mb8" [produto]="produto">
+    </app-produto-card>
+
+  </div>
+
+</div>
+</ng-template>

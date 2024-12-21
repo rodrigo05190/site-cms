@@ -1,0 +1,20 @@
+<div class="flex-center">
+  <div class="s7 fw600 ma16">Redirect</div>
+  <div class="ml-full"></div>
+  <div class="botoes mr16">
+    <button (click)="novo = true" mat-button>novo</button>
+  </div>
+</div>
+<div class="separador mt16 mb16"></div>
+<div class="flex-center w-100 pl16 pr16">
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Procurar</mat-label>
+    <input matInput [(ngModel)]="pesquisa" #t type="text" class="bg-branco" placeholder="Buscar Origem ou Destino">
+    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+  </mat-form-field>
+</div>
+<div class="separador mt8 mb16"></div>
+<div class="w-100 lista pl16 pr16">
+  <app-redirect-card *ngIf="novo" [(novo)]="novo" (atualizar)="novo = false; atualizar()"></app-redirect-card>
+  <app-redirect-card *ngFor="let item of lista()" (atualizar)="atualizar()" [redirect]="item"></app-redirect-card>
+</div>

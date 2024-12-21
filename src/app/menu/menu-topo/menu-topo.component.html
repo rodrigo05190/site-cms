@@ -1,0 +1,20 @@
+<mat-menu #rootMenu="matMenu">
+  <!-- <button mat-menu-item [matMenuTriggerFor]="subMenu">Power</button> -->
+  <button routerLink="/logout" mat-menu-item>Sair</button>
+</mat-menu>
+
+<!-- <mat-menu #subMenu="matMenu">
+  <button mat-menu-item>Shut down</button>
+  <button mat-menu-item>Restart</button>
+  <button mat-menu-item>Hibernate</button>
+</mat-menu> -->
+
+<div class="perfil">
+  <img src="../../assets/avatar.jpg" alt="Avatar">
+</div>
+<button mat-button [matMenuTriggerFor]="rootMenu" class="botao-perfil">
+  <span>{{ authService.obterNomeUsuario() }}
+
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </span>
+</button>

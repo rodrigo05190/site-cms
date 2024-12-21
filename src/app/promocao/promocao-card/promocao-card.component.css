@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+:host:hover {
+  z-index: 2
+}
+
+img {
+  max-width: 100%;
+}
+
+/* :host:hover .conteudo {
+  filter: blur(3px);
+} */
+
+

@@ -1,0 +1,6 @@
+{
+    "name": "Angular",
+    "image": "mcr.microsoft.com/devcontainers/typescript-node:16-bullseye",
+    "postStartCommand": "rm -rf node_modules rm -rf package-lock.json && npm cache clean --force && npm install --force && npm install -g @angular/cli@12  && ng serve",
+    "remoteUser": "root"
+}

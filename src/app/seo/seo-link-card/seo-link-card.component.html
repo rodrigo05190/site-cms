@@ -1,0 +1,36 @@
+  <div class="conteudo grid-infos pt8">
+
+    <mat-form-field  class="campo" appearance="outline">
+      <mat-label>Link</mat-label>
+      <input matInput [disabled]='!editar' [(ngModel)]="seo.link" title="link" type="text" class="bg-branco" placeholder="/fale-conosco">
+    </mat-form-field>
+
+    <mat-form-field  class="campo" appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput [disabled]='!editar' [(ngModel)]="seo.title" name='tilte' type="text" class="bg-branco" placeholder="Apartamentos a venda">
+    </mat-form-field>
+
+    <mat-form-field  class="campo" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [disabled]='!editar' [(ngModel)]="seo.description" name="description" type="text" class="bg-branco" placeholder="Apartamentos a venda em São Paulo com a garantia e qualidade que só a Trisul oferece.">
+    </mat-form-field>
+
+    <mat-form-field  class="campo" appearance="outline">
+      <mat-label>H1</mat-label>
+      <input matInput [disabled]='!editar' [(ngModel)]="seo.h1" name="h1" type="text" class="bg-branco" placeholder="Apartamentos a venda em São Paulo">
+    </mat-form-field>
+  </div>
+  <div class="acoes lista pa8" *ngIf="!editar && !abrirNovoCard">
+      <button (click)="editarClick()" mat-ripple class="brt press mt8 mb8 pa8 amarelo"><mat-icon>edit</mat-icon></button>
+      <button (click)="removerClick(seo);" mat-ripple class="brt press mt8 mb8 pa8 vermelho"><mat-icon>delete</mat-icon></button>
+  </div>
+  <div class="acoes lista pa8" *ngIf="editar && !abrirNovoCard">
+    <button (click)="salvarClick(seo)" mat-ripple class="brt press mt8 mb8 pa8 amarelo"><mat-icon>save</mat-icon></button>
+    <button (click)="cancelarClick()" mat-ripple class="brt press mt8 mb8 pa8 vermelho"><mat-icon>cancel</mat-icon></button>
+  </div>
+  <div class="acoes lista pa8" *ngIf="abrirNovoCard">
+    <button (click)="salvarSeoClick(seo)" mat-ripple class="brt press mt8 mb8 pa8 amarelo"><mat-icon>save</mat-icon></button>
+    <button (click)="cancelarSeoClick()" mat-ripple class="brt press mt8 mb8 pa8 vermelho"><mat-icon>cancel</mat-icon></button>
+  </div>
+
+

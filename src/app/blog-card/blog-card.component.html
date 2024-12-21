@@ -1,0 +1,32 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">
+      Blog
+    </span>
+
+
+    <div class="botoes grid-infos ml-full">
+      <button color="warn" (click)="excluir()" *ngIf="blogExiste" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" (click)="salvar()" mat-button>Salvar</button>
+    </div>
+
+  </div>
+
+  <div class="conteudo">
+
+    <div class="grid-infos full">
+
+      <mat-form-field class="campo ma8 full" appearance="outline">
+        <mat-label>Id do Blog</mat-label>
+        <input matInput type="text" [(ngModel)]="blogId" name="title" placeholder="Ex. 8900">
+        <!-- <span matSuffix>m²</span> -->
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+
+
+
+    </div>
+  </div>
+</div>

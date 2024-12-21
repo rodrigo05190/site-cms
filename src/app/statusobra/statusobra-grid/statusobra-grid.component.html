@@ -1,0 +1,62 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Status de obra</span>
+    <div class="ml-full">
+      <button mat-button class="ml8" (click)="this.novo()" *ngIf="!this.evolucaoObraId">Novo</button>
+      <button mat-button color="warn" class="ml8" (click)="this.excluir()" *ngIf="this.evolucaoObraId">Excluir</button>
+      <button mat-button class="ml8" (click)="this.salvar()" *ngIf="this.evolucaoObraId">Salvar</button>
+    </div>
+  </div>
+  <div class="grid-infos pt16">
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Movimentação da Terra</mat-label>
+      <input matInput [(ngModel)]="model.movimentacaoDaTerra" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Fundação</mat-label>
+      <input matInput [(ngModel)]="model.fundacao" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Estrutura</mat-label>
+      <input matInput [(ngModel)]="model.estrutura" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Alvenaria</mat-label>
+      <input matInput [(ngModel)]="model.alvenaria" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Instalações</mat-label>
+      <input matInput [(ngModel)]="model.instalacoes" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Fachada</mat-label>
+      <input matInput [(ngModel)]="model.fachada" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+    <mat-form-field class="mr8" appearance="outline">
+      <mat-label>Acabamentos</mat-label>
+      <input matInput [(ngModel)]="model.acabamentos" type="number" min="0" max="100" placeholder="77%">
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      <span matSuffix>%</span>
+    </mat-form-field>
+
+  </div>
+</div>

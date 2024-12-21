@@ -1,0 +1,27 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Galeria</span>
+  </div>
+  <div class="conteudo">
+
+
+    <div class="grid-infos">
+      <div (click)="telanovo = true" mat-ripple class="add-novo ma8 pa16 br5" style="width: 130px;">
+        <mat-icon>add</mat-icon>
+        <!-- <div class="s3 center mt16">adicionar</div> -->
+      </div>
+
+      <app-galeria-card [ngClass]="{'ativo': gal == galerias[galeriaSelecionadaIndex]}"
+        *ngFor="let gal of galerias; let i = index" [galeria]="gal" (click)="galeriaSelecionadaIndex = i">
+      </app-galeria-card>
+    </div>
+    <app-galeria-ficha (galeriaDeletada)="galeriaDeletada($event)" (fechar)="galeriaSelecionadaIndex = null"
+      *ngIf="galeriaSelecionadaIndex != null && galerias[galeriaSelecionadaIndex]" [produtoId]="produtoId"
+      [(galeria)]="galerias[galeriaSelecionadaIndex]"></app-galeria-ficha>
+
+
+  </div>
+</div>
+
+<app-galeria-record *ngIf="telanovo" (cancelado)="telanovo = false" (salvo)="telanovo = false; novo($event)">
+</app-galeria-record>

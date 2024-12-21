@@ -1,0 +1,102 @@
+<mat-list>
+
+  <span class="flex-center logo mt8 pt16 pb32 ">
+    <img src="../../assets/logo-newTrisul.svg" alt="Trisul">
+  </span>
+
+  <mat-list-item mat-ripple routerLink="/dashboard">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">dashboard</mat-icon> Dashboard
+    </div>
+  </mat-list-item>
+  <mat-list-item mat-ripple routerLink="/produto">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">apartment</mat-icon> Empreendimentos
+    </div>
+  </mat-list-item>
+  <mat-list-item mat-ripple routerLink="/seo">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">search</mat-icon> SEO
+    </div>
+  </mat-list-item>
+  <mat-list-item mat-ripple routerLink="/promocao">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">star</mat-icon> Promoção
+    </div>
+  </mat-list-item>
+  <mat-list-item mat-ripple routerLink="/regiao">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">place</mat-icon> Região
+    </div>
+  </mat-list-item>
+  <mat-list-item mat-ripple routerLink="/promocao">
+    <a href="http://admin.trisul-sa.com.br/FaleConosco" target="_blank" class="branco flex-center">
+      <mat-icon class="mr8">chat</mat-icon> Fale conosco
+    </a>
+  </mat-list-item>
+
+  <mat-list-item mat-ripple (click)="status.aplicacoes = !status.aplicacoes">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">code</mat-icon> Aplicações
+    </div>
+  </mat-list-item>
+  <div class="lista" *ngIf="status.aplicacoes">
+    <mat-list-item routerLink="/aplicacao/redirect" style="padding-left:30px;" mat-ripple>
+      <a class="branco flex-center">
+        Redirect
+      </a>
+    </mat-list-item>
+    <mat-list-item routerLink="/aplicacao/cardshome" style="padding-left:30px;" mat-ripple>
+      <a class="branco flex-center">
+        Cards Home
+      </a>
+    </mat-list-item>
+  </div>
+
+  <mat-list-item mat-ripple routerLink="/promocao">
+    <a href="http://admin.trisul-sa.com.br/FaleConosco" target="_blank" class="branco flex-center">
+      <mat-icon class="mr8">supervisor_account</mat-icon> Portal Parceiros
+    </a>
+  </mat-list-item>
+
+  <div class="lista">
+    <mat-list-item style="padding-left:30px;" mat-ripple>
+      <a href="http://admin.trisul-sa.com.br/Parceiro/Taxa" target="_blank" class="branco flex-center">
+        Taxas
+      </a>
+    </mat-list-item>
+    <mat-list-item style="padding-left:30px;" mat-ripple>
+      <a href="http://admin.trisul-sa.com.br/Parceiro/Arquivo" target="_blank" class="branco flex-center">
+        Arquivos
+      </a>
+    </mat-list-item>
+    <mat-list-item style="padding-left:30px;" mat-ripple>
+      <a href="http://admin.trisul-sa.com.br/Parceiro/Tabela" target="_blank" class="branco flex-center">
+        Tabela do mês
+      </a>
+    </mat-list-item>
+    <mat-list-item style="padding-left:30px;" mat-ripple>
+      <a href="http://admin.trisul-sa.com.br/Parceiro/Treinamento" target="_blank" class="branco flex-center">
+        Treinamentos
+      </a>
+    </mat-list-item>
+    <mat-list-item style="padding-left:30px;" mat-ripple>
+      <a href="http://admin.trisul-sa.com.br/Regiao/AdicionarRegiao" target="_blank" class="branco flex-center">
+        Regiões
+      </a>
+    </mat-list-item>
+    <mat-list-item style="padding-left:30px;" mat-ripple>
+      <a href="http://admin.trisul-sa.com.br/Regiao/AdicionarBairro" target="_blank" class="branco flex-center">
+        Bairros
+      </a>
+    </mat-list-item>
+  </div>
+
+  <!-- <mat-list-item mat-ripple (click)="limparCache()">
+    <div class="branco flex-center">
+      <mat-icon class="mr8">reload</mat-icon> Limpar Cache Backend
+    </div>
+  </mat-list-item> -->
+
+
+</mat-list>

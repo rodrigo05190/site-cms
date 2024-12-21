@@ -1,0 +1,94 @@
+.branco { color: white; }
+.cinza-muito-claro { color: #F5F5F5; }
+.cinza-claro { color: #E3E3E3; }
+.cinza { color: #88939A }
+.preto { color: black; }
+.azul { color: #001640; }
+.azul-claro { color: #00C4F4; }
+.amarelo { color: #FFCB31; }
+.amarelo-escuro { color: #C79116; }
+.vermelho {color: rgb(238, 101, 101);}
+.verde {color: rgba(45, 206, 88, 1);}
+
+.hv-branco:hover { color: white; }
+.hv-cinza-muito-claro:hover { color: #F5F5F5; }
+.hv-cinza-claro:hover { color: #E3E3E3; }
+.hv-cinza:hover { color: #88939A }
+.hv-preto:hover { color: black; }
+.hv-azul:hover { color: #001640; }
+.hv-azul-claro:hover { color: #00C4F4; }
+.hv-amarelo:hover { color: #FFCB31; }
+.hv-amarelo-escuro:hover { color: #C79116; }
+.hv-vermelho:hover { color: rgb(238, 101, 101);}
+.hv-verde:hover { color: rgba(45, 206, 88, 1);}
+
+.bg-branco { background: white; }
+.bg-branco-f5 { background: #F5F5F5; }
+.bg-cinza-muito-claro { background: #F5F5F5; }
+.bg-cinza-claro { background: #E3E3E3; }
+.bg-cinza { background: #88939A; }
+.bg-preto { background: black; }
+.bg-azul { background: #001640; }
+.bg-azul-claro { background: #00C4F4; }
+.bg-amarelo { background: #FFCB31; }
+.bg-amarelo-escuro { background: #C79116; }
+.bg-vermelho {background: rgb(238, 101, 101);}
+.bg-verde {background: rgba(45, 206, 88, 1);}
+
+.hv-bg-branco:hover { background: white; }
+.hv-bg-branco-f5:hover { background: #F5F5F5; }
+.hv-bg-cinza-muito-claro:hover { background: #F5F5F5; }
+.hv-bg-cinza-claro:hover { background: #E3E3E3; }
+.hv-bg-cinza:hover { background: #88939A; }
+.hv-bg-preto:hover { background: black; }
+.hv-bg-azul:hover { background: #001640; }
+.hv-bg-azul-claro:hover { background: #00C4F4; }
+.hv-bg-amarelo:hover { background: #FFCB31; }
+.hv-bg-amarelo-escuro:hover { background: #C79116; }
+.hv-bg-vermelho:hover { background: rgb(238, 101, 101);}
+.hv-bg-verde:hover { background: rgba(45, 206, 88, 1);}
+
+.borda-cinza {
+  /* border: 1px solid rgba(0, 0, 0, 0.11); */
+  border: 1px solid #E8E8E8;
+}
+
+.borda-cinza-tracejada {
+  border: 4px dashed rgba(0, 0, 0, 0.11)
+}
+
+.opacity-20 {
+  opacity: .2;
+}
+.opacity-50 {
+  opacity: .5;
+}
+
+.sombra-1  {
+  box-shadow:  8px 8px 16px #d9d9d9,
+             -8px -8px 16px #ffffff;
+}
+
+.sombra-2 {
+  box-shadow: 0 0px 10px -5px black;
+}
+
+.hv-sombra-1:hover  {
+  box-shadow:  8px 8px 16px #d9d9d9,
+             -8px -8px 16px #ffffff;
+}
+
+.hv-sombra-2:hover {
+  box-shadow: 0 0px 10px -5px black;
+}
+
+
+.svg-branco,
+.svg-branco * {
+  fill: white;
+}
+
+:root {
+  --amarelo: #FFCB31;
+  --azul: #001640;
+}

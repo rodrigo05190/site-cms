@@ -1,0 +1,48 @@
+insert into Imagem (Arquivo, Descricao) values ('area-comum-arvore.svg', 'Icone arvore');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-festa.svg', 'Icone festa');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-jogos.svg', 'Icone jogos');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-pet.svg', 'Icone pet');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-sauna.svg', 'Icone sauna');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-bar.svg', 'Icone bar');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-lavanderia.svg', 'Icone lavanderia');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-piscina.svg', 'Icone piscina');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-solarium.svg', 'Icone solarium');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-bicicletario.svg', 'Icone bicicletario');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-fitness.svg', 'Icone fitness');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-lobby.svg', 'Icone lobby');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-pizza.svg', 'Icone pizza');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-spa.svg', 'Icone spa');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-churrasqueira.svg', 'Icone churrasqueira');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-gramado.svg', 'Icone gramado');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-lua.svg', 'Icone lua');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-playground.svg', 'Icone playground');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-deck.svg', 'Icone deck');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-hall.svg', 'Icone hall');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-meeting.svg', 'Icone meeting');
+insert into Imagem (Arquivo, Descricao) values ('area-comum-quadra.svg', 'Icone quadra');
+
+
+select Id, Arquivo from Imagem where Arquivo in (
+'area-comum-arvore.svg',
+'area-comum-festa.svg',
+'area-comum-jogos.svg',
+'area-comum-pet.svg',
+'area-comum-sauna.svg',
+'area-comum-bar.svg',
+'area-comum-lavanderia.svg',
+'area-comum-piscina.svg',
+'area-comum-solarium.svg',
+'area-comum-bicicletario.svg',
+'area-comum-fitness.svg',
+'area-comum-lobby.svg',
+'area-comum-pizza.svg',
+'area-comum-spa.svg',
+'area-comum-churrasqueira.svg',
+'area-comum-gramado.svg',
+'area-comum-lua.svg',
+'area-comum-playground.svg',
+'area-comum-deck.svg',
+'area-comum-hall.svg',
+'area-comum-meeting.svg',
+'area-comum-quadra.svg'
+)

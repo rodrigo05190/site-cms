@@ -1,0 +1,68 @@
+<div class="conteudo bg-branco lista borda-cinza br5 quadro">
+
+  <div class="topo flex-top w-100">
+    <span class="s4 cinza fw600">Destaques</span>
+    <div class="ml-full"></div>
+    <button mat-stroked-button color="primary" routerLink="/produto">Ir para empreendimentos</button>
+  </div>
+
+  <div class="flex-center w-100">
+
+    <mat-form-field class="ml8 mr8" appearance="outline">
+      <mat-label>Filtrar por</mat-label>
+      <mat-select>
+        <mat-option value="acessos">Acessos</mat-option>
+        <mat-option value="conversoes">Conversões</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="ml8 mr8" appearance="outline">
+      <mat-label>Data</mat-label>
+      <mat-select>
+        <mat-option value="hoje">Hoje</mat-option>
+        <mat-option value="7dias">7 Dias</mat-option>
+        <mat-option value="30dias">30 Dias</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="ml8 mr8" appearance="outline">
+      <mat-label>Ordem</mat-label>
+      <mat-select>
+        <mat-option value="crescente">Crescente</mat-option>
+        <mat-option value="decrescente">Decrescente</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </div>
+
+
+
+  <div class="tabela w-100 pl8 pr8 pb16">
+    <div class="cabecalho">
+      <div class="coluna cl-full">Produto</div>
+      <div class="coluna cl-150 center">Conversão</div>
+      <div class="coluna cl-150 center">Acesso</div>
+      <div class="coluna cl-100 flex-end"></div>
+      <!-- <div class="coluna sl-botoes"></div> -->
+    </div>
+    <div class="lista scroll">
+
+      <div class="linha press w-100 flex-center" *ngFor="let item of items">
+        <div class="coluna cl-full">Omni Ibirapuera</div>
+        <div class="coluna cl-150 center">25</div>
+        <div class="coluna cl-150 center">200</div>
+
+        <div class="coluna cl-100 flex-end">
+          <button class="press br5 ml8" mat-ripple matTooltip="Acessar" ><mat-icon [inline]="true">open_in_new</mat-icon></button>
+          <button class="press br5 ml8" mat-ripple matTooltip="Editar" ><mat-icon [inline]="true">edit</mat-icon></button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+</div>

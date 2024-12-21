@@ -1,0 +1,114 @@
+<div class="flex-center">
+  <div class="lista ma16">
+    <div class="s7 fw600 mb8 flex-center">
+      <span class="mr8">Conjunto - {{ conjunto?.nome || '(sem nome) ID - ' + conjunto?.id }}</span>
+      <span class="bg-amarelo fw500 br5 pt4 pb4 pr8 pl8 s1 azul"
+        *ngIf="statusConjuntoSelecionado()">{{ statusConjuntoSelecionado()?.nome }}</span>
+    </div>
+    <div class="s2 fw400 ">{{ produto?.nome }}</div>
+  </div>
+</div>
+<div class="separador mt16 mb16"></div>
+
+<form (submit)="salvar()" class="quadro">
+  <div class="topo">
+    <div class="lista">
+      <span class="s5 fw600">Informações</span>
+    </div>
+
+    <div class="botoes grid-infos ml-full">
+      <button color="warn" type="button" *ngIf="!novo" (click)="excluir()" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" type="submit" mat-button>Salvar</button>
+      <div class="mr8"></div>
+      <button color="primary" type="button" *ngIf="novo" (click)="janelaAdd = true" mat-button>Salvar Varios</button>
+    </div>
+  </div>
+  <div class="grid-infos">
+
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput required type="text" [(ngModel)]="conjunto.nome" name="nome" placeholder="Torre Norte">
+      <!-- <span matSuffix>m²</span> -->
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    </mat-form-field>
+
+
+    <mat-form-field class="campo mr8" appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select [(ngModel)]="conjunto.statusConjuntoId" name="statusConjuntoId">
+        <mat-option *ngFor="let item of statusconjuntos" [value]="item.id">
+          {{ item.nome }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>Elevadores</mat-label>
+      <input matInput type="number" [(ngModel)]="conjunto.elevadores" name="elevadores" placeholder="1">
+      <!-- <span matSuffix>m²</span> -->
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>Pavimentos</mat-label>
+      <input matInput type="number" [(ngModel)]="conjunto.pavimentos" name="pavimentos" placeholder="7">
+      <!-- <span matSuffix>m²</span> -->
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>Unidades por pavimentos</mat-label>
+      <input matInput type="number" [(ngModel)]="conjunto.unidadesPorPavimento" name="unidadesPorPavimento"
+        placeholder="4">
+      <!-- <span matSuffix>m²</span> -->
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    </mat-form-field>
+
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>Vista por andar URL</mat-label>
+      <input matInput type="text" [(ngModel)]="conjunto.vistaPorAndarUrl" name="vistaPorAndarUrl"
+        placeholder="Link do Iframe">
+      <!-- <span matSuffix>m²</span> -->
+      <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+    </mat-form-field>
+
+
+  </div>
+
+</form>
+
+<app-planta-grid *ngIf="conjunto?.id && produto?.id" [produtoId]="produto.id" [conjuntoId]="conjunto.id"></app-planta-grid>
+
+
+<div class="janelaMultiplos w-100" *ngIf="janelaAdd">
+  <div class="fundo" (click)="janelaAdd = false"></div>
+  <div class="quadro">
+    <mat-form-field class="ma8" appearance="outline">
+      <mat-label>Quantidade:</mat-label>
+      <input matInput required type="number" min="1"  [(ngModel)]="addMultiplo" name="addMultiplo" placeholder="40">
+
+    </mat-form-field>
+    <div class="botoes grid-infos"  *ngIf="!carregandoMultipo">
+      <button color="warm" mat-button (click)="janelaAdd = false">Cancelar</button>
+
+      <div class="ml-full"></div>
+      <button color="primary" mat-button (click)="adicionarMultiplos()">Continuar</button>
+    </div>
+
+    <div class="w-100 center azul s2" *ngIf="carregandoMultipo">Carregando</div>
+  </div>
+</div>
+<!-- <div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Endereço</span> <span class="s3 fw300">(opcional)</span>
+
+    <div class="botoes grid-infos ml-full">
+      <button color="warn" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" mat-button>Editar</button>
+    </div>
+  </div>
+
+  <app-endereco-card></app-endereco-card>
+</div> -->

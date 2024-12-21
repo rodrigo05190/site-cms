@@ -1,0 +1,22 @@
+<div class="flex-center">
+  <div class="s7 fw600 ma16">Promoções</div>
+</div>
+<div class="separador mt16 mb16"></div>
+
+
+<div class="quadro">
+
+  <div class="grid-infos">
+
+    <div mat-ripple class="add-novo s10 ma8 br5">
+      <mat-icon routerLink="/promocao/novo" [inline]="true">add</mat-icon>
+    </div>
+
+    <div *ngFor="let item of items">
+      <app-promocao-card routerLink="/promocao/{{item.id}}" [promocao]="item"></app-promocao-card>
+    </div>
+    <!-- <app-promocao-card routerLink="/promocao/4"></app-promocao-card>
+    <app-promocao-card routerLink="/promocao/4"></app-promocao-card>
+    <app-promocao-card routerLink="/promocao/4"></app-promocao-card> -->
+  </div>
+</div>

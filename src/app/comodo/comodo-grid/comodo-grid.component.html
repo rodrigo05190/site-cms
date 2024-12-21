@@ -1,0 +1,56 @@
+<div class="quadro">
+  <div class="topo fw600 s5"><span class="">Comodos</span></div>
+  <div class="grid-infos">
+
+
+    <div class="conteudo">
+
+      <div class="inserir ma8">
+
+        <mat-form-field class="campo mr8" appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select required [(ngModel)]="plantaComodo.tipoId" name="tipoId">
+            <mat-option *ngFor="let comodo of comodoTipo" [value]="comodo.id">
+              {{ comodo.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-form-field class="mr8" appearance="outline">
+            <mat-label>Tamanho (m²) (opicional)</mat-label>
+            <input matInput type="number" min="0" placeholder="Ex. 10m²">
+    </mat-form-field> -->
+
+        <mat-form-field class="mr8" appearance="outline">
+          <mat-label>Quantidade</mat-label>
+          <input matInput [(ngModel)]="plantaComodo.quantidade" name="quantidade" type="number" min="1" placeholder="Ex. 1">
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="mr8" appearance="outline">
+          <mat-label>Tamanho</mat-label>
+          <input matInput [(ngModel)]="plantaComodo.tamanho" name="tamanho" type="number" min="1" placeholder="Ex. 14m²">
+          <span matSuffix>m²</span>
+
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+
+        </mat-form-field>
+
+        <div mat-ripple class="press adicionar-input bg-branco azul mb16 pa16 br5" (click)="adicionar()">
+          <mat-icon>add</mat-icon>
+          <!-- <span>inserir</span> -->
+        </div>
+
+      </div>
+
+      <div class="lista">
+        <app-comodo-card
+        ngSortgridItem [ngSortGridItems]='plantaComodos' (sorted)="ordenar($event)" [ngSortGridGroup]="'comodocardGrid'+ plantaId"
+        *ngFor="let item of plantaComodos" [plantaComodo]="item" (excluido)="excluir($event)">
+        </app-comodo-card>
+      </div>
+    </div>
+
+
+  </div>
+</div>

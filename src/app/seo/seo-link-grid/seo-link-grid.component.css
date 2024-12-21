@@ -1,0 +1,18 @@
+:host {
+  display: flex;
+  width: 100%;
+}
+
+* {
+  position: relative;
+}
+
+.example-viewport {
+  height: calc(100vh - 360px);
+  width: 100%;
+  border: none;
+}
+
+.example-item {
+  height: 50px;
+}

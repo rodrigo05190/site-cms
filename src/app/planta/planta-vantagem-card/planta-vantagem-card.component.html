@@ -1,0 +1,26 @@
+<div class="quadro">
+  <div class="topo s5 fw600">
+    <span class="">Vantagens</span>
+    <div class="botoes grid-infos ml-full">
+      <!-- <button color="warn" (click)="excluir()" mat-button>Excluir</button> -->
+      <div class="mr8"></div>
+      <button color="primary" (click)="salvar()" mat-button>Salvar</button>
+    </div>
+  </div>
+  <div class="grid-infos">
+
+    <div class="conteudo ma8">
+      <mat-checkbox [(ngModel)]="vantagemcompra.fgts" class="ml8 mr8">FGTS</mat-checkbox>
+      <mat-checkbox [(ngModel)]="vantagemcompra.escrituraGratis" class="ml8 mr8">Escritura Grátis</mat-checkbox>
+      <mat-checkbox [(ngModel)]="vantagemcompra.itbigratis" class="ml8 mr8">ITBI Grátis</mat-checkbox>
+      <mat-checkbox [(ngModel)]="vantagemcompra.minhaCasaMinhaVida" class="ml8 mr8">Minha Casa Minha Vida</mat-checkbox>
+      <mat-form-field class="ml8 mr8" appearance="outline">
+        <mat-label>Subsídio</mat-label>
+        <input [(ngModel)]="vantagemcompra.subsidio" matInput type="number" min="1" placeholder="Ex. 27.000">
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+    </div>
+
+
+  </div>
+</div>

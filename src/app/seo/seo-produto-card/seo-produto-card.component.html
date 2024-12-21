@@ -1,0 +1,44 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">
+      SEO
+    </span>
+    <mat-icon
+      matTooltip="Caso exista uma configuração de SEO definida para a URL do produto, ela substituirá as definidas aqui."
+      matTooltipPosition="right" mat-icon-button class="opacity-50 ml8">info</mat-icon>
+
+    <div class="botoes grid-infos ml-full">
+      <button color="warn" *ngIf="seo?.id" (click)="excluir()" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" (click)="salvar()" mat-button>Salvar</button>
+    </div>
+
+  </div>
+
+  <div class="conteudo">
+
+    <div class="grid-infos full">
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" [(ngModel)]="seo.title" name="title" placeholder="Ex. Empreendimento a venda | Trisul">
+        <!-- <span matSuffix>m²</span> -->
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>H1</mat-label>
+        <input matInput type="text" [(ngModel)]="seo.h1" name="h1" placeholder="Ex. Empreendimento a venda ">
+        <!-- <span matSuffix>m²</span> -->
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+
+      <mat-form-field class="campo ma8 full" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea [(ngModel)]="seo.description" name="description" matInput placeholder="Ex. SEO Descrição do produto ..."></textarea>
+      </mat-form-field>
+
+    </div>
+  </div>
+</div>

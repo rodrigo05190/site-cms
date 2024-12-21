@@ -1,0 +1,41 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">
+      Book
+    </span>
+
+
+    <div class="botoes grid-infos ml-full">
+      <button color="warn" (click)="excluir()" *ngIf="bookExiste" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" (click)="salvar()" mat-button>Salvar</button>
+    </div>
+
+  </div>
+
+  <div class="conteudo">
+
+    <div class="grid-infos full">
+
+
+      <p *ngFor="let item of books.arquivos">Arquivo Selecionado: {{item.name}} - {{(item.size / 1024) | number : "1.2-2"}}KB
+      <button (click)="books.arquivos=[]"> Remover </button>
+      </p>
+
+      <app-inserir-arquivos class="w-100" [single]="true" (arquivosParaEnviar)="books.arquivos = $event"></app-inserir-arquivos>
+
+      <mat-form-field class="campo ma8 full" appearance="outline">
+        <mat-label>Link</mat-label>
+        <input matInput type="text" [(ngModel)]="books.link" name="title" placeholder="Ex. http://trisul-mobile.homolog.enken.it/assets/pdfs/20200610_reampl_projetos_pdf-teste_v1.pdf">
+        <!-- <span matSuffix>m²</span> -->
+        <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8 full" appearance="outline">
+        <mat-label>Descição</mat-label>
+        <textarea required [(ngModel)]="books.descricao" name="description" matInput placeholder="Ex. Confira mais informações no Book do empreendimento ..."></textarea>
+      </mat-form-field>
+
+    </div>
+  </div>
+</div>

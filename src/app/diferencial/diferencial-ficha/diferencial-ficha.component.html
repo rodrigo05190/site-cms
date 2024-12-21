@@ -1,0 +1,53 @@
+<div class="conteudo">
+  <mat-form-field class="campo ma8 w-100" appearance="outline">
+    <mat-label>Pesquisar</mat-label>
+    <input matInput type="text" [(ngModel)]="textoPesquisado" name="nome" placeholder="Buscar por Texto">
+    <!-- <span matSuffix>m²</span> -->
+    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+  </mat-form-field>
+  <div class="grid-infos">
+    <div class="cartao br5 borda-cinza pt4 pb4 pr8 pl8 ma8" [ngClass]="{'ativo': tipoSelecionadoId ==  tipo.id}"
+      (click)="tipoSelecionadoId = tipo.id" *ngFor="let tipo of tipos">
+      <span class="s1">{{tipo.nome}}</span>
+    </div>
+    <!-- <div class="cartao br5 borda-cinza pt4 pb4 pr8 pl8 ma8">
+      <span class="s1">padrão de qualidade</span>
+    </div>
+    <div class="cartao br5 borda-cinza pt4 pb4 pr8 pl8 ma8">
+      <span class="s1"> diferenciais dos apartamentos</span>
+    </div> -->
+
+  </div>
+
+  <div class="lista">
+    <mat-form-field class=" w-100" appearance="outline">
+      <mat-label>Novo Diferencial</mat-label>
+      <textarea [(ngModel)]="textoNovoDiferencial" name="novoDiferencial" matInput
+        placeholder="Ex. Bicicletario Coberto..."></textarea>
+      <button mat-button class="w-100" (click)="novoDiferencial()">Adicionar</button>
+    </mat-form-field>
+    <div class="w-100 flex-center center pa32" *ngIf="carregando">
+      <mat-spinner></mat-spinner>
+    </div>
+    <app-diferencial-card *ngFor="let item of itensFiltrados()" [produtoId]="produtoId" [diferencial]="item"
+      [diferenciaisProduto]="diferenciaisProduto" (atualizou)=atualizarList($event)></app-diferencial-card>
+  </div>
+
+</div>
+
+
+<!-- <div class="pt4 pb4 pl8 pr8 ma8 brt hv-bg-azul branco" [ngClass]="{'bg-amarelo': true}">
+  <span class="s1">
+    sustentabilidade
+  </span>
+</div>
+<div class="pt4 pb4 pl8 pr8 ma8 brt hv-bg-azul branco" [ngClass]="{'bg-amarelo': true}">
+  <span class="s1">
+    padrão de qualidade
+  </span>
+</div>
+<div class="pt4 pb4 pl8 pr8 ma8 brt hv-bg-azul branco" [ngClass]="{'bg-amarelo': true}">
+  <span class="s1">
+    diferenciais dos apartamentos
+  </span>
+</div> -->

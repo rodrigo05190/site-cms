@@ -1,0 +1,32 @@
+<div class="conteudo ma8">
+
+  <div class="s4 ma8">Central de vendas {{ nome }}</div>
+
+  <app-endereco-card></app-endereco-card>
+
+  <div class="grid-infos">
+    <!-- <div class="campo">
+      <div class="descricao">Telefone: </div>
+      <div class="valor">11 9 5588-7458</div>
+    </div>
+    <div class="campo">
+      <div class="descricao">Telefone: </div>
+      <div class="valor">17 9 7410-0147</div>
+    </div>
+    <div class="campo">
+      <div class="descricao">Telefone: </div>
+      <div class="valor">41 4459-8874</div>
+    </div> -->
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>DDD:</mat-label>
+      <input matInput type="text" [(ngModel)]="telefone.ddd" name="ddd" placeholder="Ex. 41">
+    </mat-form-field>
+    <mat-form-field class="campo ma8" appearance="outline">
+      <mat-label>Telefone (número):</mat-label>
+      <input matInput type="text" [(ngModel)]="telefone.numero" name="numero" placeholder="Ex. 9 4459-8874">
+    </mat-form-field>
+  </div>
+
+</div>
+
+<app-capa-excluir></app-capa-excluir>

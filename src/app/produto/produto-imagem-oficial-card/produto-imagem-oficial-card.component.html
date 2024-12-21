@@ -1,0 +1,14 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600" *ngIf="produtoId">Imagens Oficiais {{ produtoId }}</span>
+  </div>
+  <div class="conteudo">
+    <div class="grid-infos" *ngIf="imagemProduto && produtoId">
+
+      <app-imagem-case (clickDeletar)="imagemProduto.bannerId = null; update()" (uploadFinalizado)="imagemProduto.bannerId = $event.id; update()" [produtoId]="produtoId" [id]="imagemProduto.bannerId" descricao=true visualizar=true remover=true enviar=true titulo="Banner"></app-imagem-case>
+      <app-imagem-case (clickDeletar)="imagemProduto.logoId = null; update()" (uploadFinalizado)="imagemProduto.logoId = $event.id; update()" [produtoId]="produtoId" [id]="imagemProduto.logoId" descricao=true visualizar=true remover=true enviar=true titulo="Logo"></app-imagem-case>
+      <app-imagem-case (clickDeletar)="imagemProduto.fachadaId = null; update()" (uploadFinalizado)="imagemProduto.fachadaId = $event.id; update()" [produtoId]="produtoId" [id]="imagemProduto.fachadaId" descricao=true visualizar=true remover=true enviar=true titulo="Fachada"></app-imagem-case>
+
+    </div>
+  </div>
+</div>

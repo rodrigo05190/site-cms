@@ -1,0 +1,420 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "cores.css";
+@import "espacamentos.css";
+@import "fonts.css";
+@import "scroll.css";
+* {
+  box-sizing: border-box;
+  outline: none !important;
+  font-family: Roboto;
+}
+
+input {
+  border: none;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.tabela {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  flex: 1 1 auto;
+}
+
+.tabela .cabecalho {
+  position: relative;
+  font-weight: 500;
+  color: #88939a;
+  flex: 0 0 auto;
+  padding-right: 10px;
+  /* 4px da linha + 6px do scroll  */
+}
+
+.linha {
+  position: relative;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 5px;
+  flex: 0 0 auto;
+}
+
+.linha:nth-child(even) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.linha,
+.cabecalho {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* background: red; */
+  overflow: hidden;
+  padding: 4px;
+}
+
+.coluna {
+  position: relative;
+  min-width: 0;
+  /* background: blue; */
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+}
+
+.sl-link {
+  flex: 0 0 200px;
+}
+
+.sl-titulo {
+  flex: 1 0 200px;
+}
+
+.sl-descricao {
+  flex: 1 1 200px;
+}
+
+.sl-botoes {
+  flex: 1 0 100px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.lista {
+  max-width: 100%;
+  /* overflow-x: hidden;
+  overflow-y: auto; */
+}
+
+.separador {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 1px;
+  width: calc(100% - 32px);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+}
+
+.info {
+  display: flex;
+  align-items: flex-start;
+}
+
+.pagina {
+  flex: 0 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 16px;
+  position: relative;
+}
+
+.pagina > .inside {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* padding: 16px; */
+}
+
+.card,
+app-produto-card {
+  border: 1px solid #e8e8e8;
+  transition: 0.3s box-shadow;
+}
+
+.none {
+  display: none;
+}
+
+.card:hover,
+app-produto-card:hover {
+  /* border-color: transparent; */
+  /* box-shadow: 0px 3px 12px #d9d9d9, -8px -8px 16px #ffffff; */
+  /* box-shadow: 0px 3px 16px #d9d9d9; */
+  box-shadow: 0px 8px 16px 2px #00000015;
+}
+
+.quadro {
+  flex: 1 1 auto;
+  background: white;
+  padding: 24px;
+  margin: 16px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e8e8e8;
+}
+
+.topo {
+  padding: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.campo {
+  margin: 8px;
+}
+
+.flex-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.botao-1 {
+  border: 2px solid #001640;
+}
+
+.botao-1 mat-icon {
+  height: unset !important;
+  width: unset !important;
+}
+
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.flex-middle {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-top {
+  display: flex;
+  align-items: flex-start;
+}
+
+.nw {
+  flex-wrap: nowrap;
+}
+
+.mat-tooltip {
+  white-space: pre-line;
+}
+
+.coluna button {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.campo > .descricao {
+  font-weight: 600;
+  margin-right: 8px;
+  font-size: 1rem;
+  color: #88939a;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.campo .valor {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.add-novo {
+  width: 200px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0.3;
+}
+
+.add-novo:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.add-novo mat-icon {
+  font-size: 62px !important;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-infos {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.campo {
+  display: flex;
+  flex: 1 1 400px;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.full {
+  flex-basis: 100%;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+button {
+  appearance: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.press {
+  cursor: pointer;
+}
+
+.mat-checkbox {
+  line-height: 16px;
+  height: 16px;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+mat-spinner {
+  opacity: 0.2;
+}
+
+/* Change the white to any color ;) */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
+}
+
+.card-destaque .mat-button-toggle-label-content {
+  line-height: 24px !important;
+}
+
+.cl-full {
+  flex: 1 1 100%;
+}
+
+.cl-100 {
+  flex: 0 0 100px;
+}
+
+.cl-150 {
+  flex: 0 0 150px;
+}
+
+[ngsortitemgrid] {
+  transition: 0.5s all;
+}
+
+.ng-sg-placeholder {
+  opacity: 0;
+}
+
+.ng-sg-dropped {
+}
+
+.ng-sg-selected::after {
+  /* box-sizing: content-box; */
+  content: "";
+  display: block;
+  border: 5px solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* background: red; */
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.mat-form-field .mat-form-field-outline {
+  transition: all 0.2s;
+}
+
+.mat-form-field-disabled .mat-form-field-outline {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+}
+
+.mat-input-element:disabled {
+  color: black;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-label {
+  color: black;
+}
+
+.form-submitted app-icone-seletor.ng-invalid .imagem-selecionada {
+  border-color: red;
+  border-width: 2px;
+}
+
+.regiao .mat-expansion-panel-header-title,
+.regiao .mat-expansion-panel-header-description {
+  flex: 0 0 30% !important;
+}

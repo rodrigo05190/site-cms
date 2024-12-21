@@ -1,0 +1,102 @@
+<div class="flex-center">
+  <div class="s7 fw600 ma16">Promoção</div>
+</div>
+<div class="separador mt16 mb16"></div>
+
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">{{promocao.identificacao}}</span>
+
+    <div class="botoes grid-infos ml-full" *ngIf="!promocao.id">
+      <button color="primary" (click)="novaPromocao()" mat-button>Salvar</button>
+    </div>
+
+    <div class="botoes grid-infos ml-full" *ngIf="promocao.id">
+      <button color="warn" type="button" (click)="excluirPromocao()" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" *ngIf="!editar" (click)="editar = true" mat-button>Editar</button>
+      <button color="primary" *ngIf="editar" (click)="editarPromocao()" mat-button>Salvar</button>
+    </div>
+  </div>
+
+  <div class="grid-infos">
+
+    <div *ngIf="promocao.id && !editar">
+
+      <div class="campo">
+       
+       
+          <app-imagem-case required  [(ngModel)]="promocao.seloId" [produtoId]="165"
+          titulo='Plano de fundo' enviar=true remover=true></app-imagem-case>
+      </div>
+
+
+      <div class="w-100"></div>
+
+      <div class="campo">
+        <div class="descricao">
+          Identificação:
+        </div>
+        <div class="valor">
+          {{promocao.identificacao}}
+        </div>
+      </div>
+
+      <div class="campo">
+        <div class="descricao">
+          Url:
+        </div>
+        <div class="valor">
+          <a href="{{promocao.url}}" target="_blank" rel="noopener noreferrer">{{promocao.url}}</a>
+        </div>
+      </div>
+      <div class="w-100"></div>
+      <div class="campo">
+        <div class="descricao">
+          Texto legal:
+        </div>
+        <div class="valor">
+          {{promocao.textoLegal}}
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-100" *ngIf="!promocao.id || editar">
+
+      <div class="campo">
+        
+        <app-imagem-case required [(ngModel)]="promocao.seloId" [produtoId]="165"
+        titulo='Plano de fundo' enviar=true remover=true></app-imagem-case>
+      </div>
+
+
+      <div class="w-100"></div>
+
+      <mat-form-field class=" w-100" appearance="outline">
+        <mat-label>Identificação:</mat-label>
+        <input matInput required type="text" [(ngModel)]="promocao.identificacao" name="identificacao"
+          placeholder="Ex. 4 Meses de IPTU e Condomínio grátis">
+      </mat-form-field>
+
+      <mat-form-field class=" w-100" appearance="outline">
+        <mat-label>Url:</mat-label>
+        <input matInput required type="text" [(ngModel)]="promocao.url" name="url"
+          placeholder="Ex. https://www.trisul-sa.com.br/pdf/regulamento_promocao_iptu_e_condominio_-_trisul.pdf">
+      </mat-form-field>
+
+      <mat-form-field class=" w-100" appearance="outline">
+        <mat-label>Texto legal:</mat-label>
+        <input matInput required type="text" [(ngModel)]="promocao.textoLegal" name="textoLegal"
+          placeholder="Ex. Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.">
+      </mat-form-field>
+
+
+    </div>
+
+
+
+
+  </div>
+
+</div>

@@ -1,0 +1,98 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.titulo {
+  cursor: grab;
+}
+
+.conteudo {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.imagem {
+  width: 240px;
+  height: 135px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.imagem img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.progresso {
+  height: 3px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  background: rgba(22, 99, 199, 0.267);
+  transition: all 1s;
+}
+
+.progresso .barra {
+  position: relative;
+  height: 100%;
+}
+
+.acoes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: .3s all;
+}
+
+.acoes:hover {
+  opacity: 1;
+}
+
+.imagem img {
+  pointer-events: none;
+}
+
+.acoes .btn {
+  cursor: pointer;
+  flex: 1 1 auto;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  text-shadow: 0 0 5px black;
+  transition: all .3s ease-out;
+}
+
+.acoes .btn:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+input {
+  word-break: break-word;
+}
+
+.acoes .btn {
+}
+
+.acoes:active .btn:active {
+  background: rgba(255, 255, 255, .5);
+}

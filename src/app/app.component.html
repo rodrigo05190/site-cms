@@ -1,0 +1,18 @@
+<main class="bg-cinza-muito-claro">
+  <app-menu-principal *ngIf="menuService.menuAberto" class="branco"></app-menu-principal>
+
+  <div class="conteudo">
+    <app-menu-topo *ngIf="menuService.menuAberto" class="bg-branco"></app-menu-topo>
+    <mat-progress-bar mode="indeterminate" *ngIf="menuService.loading"></mat-progress-bar>
+    <div class="saida-rota" #saidaRota>
+      <div class="mt32 mb16 pb8 ml16 mr16 pl8 pr8 press" *ngIf="mostrarBotaoVoltar"><span class="s2 flex-center"
+          (click)="voltar()">
+          <mat-icon>keyboard_arrow_left</mat-icon> voltar
+        </span></div>
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </div>
+
+</main>
+
+

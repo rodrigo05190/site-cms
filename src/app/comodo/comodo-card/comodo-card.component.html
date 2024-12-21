@@ -1,0 +1,17 @@
+<div class="campo flex-center borda-cinza pa8 pl16 pr16 br5  hv-sombra-2 arrastar">
+  <!-- <button mat-button><mat-icon></mat-icon></button> -->
+  <div class="mr16 " >
+    <mat-icon mat-ripple brt class="brt press">drag_indicator</mat-icon>
+  </div>
+  <div class="descricao truncate" style="width: 300px;"
+    [title]="plantaComodo.tipo.nome + ' ' + ((plantaComodo.tamanho || '') && plantaComodo.tamanho +'m²') ">
+    {{ plantaComodo.tipo.nome }} {{ plantaComodo.tamanho && plantaComodo.tamanho +"m²" }}
+  </div>
+  <div class="valor right" style="width: 100px;">{{ plantaComodo.quantidade }}</div>
+  <!-- <div class="valor fw500 ml16" *ngIf="plantaComodo.tamanho"></div> -->
+  <!-- <mat-icon class="ml16 brt press" mat-ripple>delete</mat-icon> -->
+
+  <div class="ml16">
+    <mat-icon mat-ripple brt class="brt press" (click)="excluir()">delete</mat-icon>
+  </div>
+</div>

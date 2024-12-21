@@ -1,0 +1,131 @@
+<div class="flex-center">
+
+  <div class="lista ma16">
+    <div class="s7 fw600 mb8" *ngIf="!novo || planta?.descricao">Planta
+      {{ planta?.descricao && ' - '+ planta?.descricao }}
+      {{ planta?.tamanho && ' - ' + planta.tamanho + 'm²' }}</div>
+    <div class="s7 fw600 mb8" *ngIf="novo && !planta?.descricao">Adicionar nova Planta</div>
+    <div class="s2 fw400 ">{{ conjunto?.nome || 'Conjunto (sem nome)' }} - {{ produto?.nome }}</div>
+  </div>
+
+</div>
+<div class="separador mt16 mb16"></div>
+
+<div class="conteudo">
+
+
+  <form (submit)="salvar()" class="quadro">
+    <div class="topo ">
+      <div class="lista">
+        <span class="s5 fw600 mb4">Informações</span>
+      </div>
+      <div class="botoes grid-infos ml-full">
+        <button color="accent" *ngIf="conjuntosShare?.length" type="button" (click)="janelaShare = true"
+          mat-button>Compartilhar / Copiar</button>
+        <div class="mr8"></div>
+        <button color="warn" type="button" (click)="excluir()" mat-button>Excluir</button>
+        <div class="mr8"></div>
+        <button color="primary" type="submit" mat-button>Salvar</button>
+      </div>
+    </div>
+
+    <div class="grid-infos">
+      <app-imagem-case *ngIf="produtoId" [produtoId]="produtoId" name="imagem" [titulo]="'Imagem'" enviar=true
+        [remover]="true" [(ngModel)]="planta.imagemId"></app-imagem-case>
+      <div class="imagem ma8">
+        <img *ngIf="planta?.imagem?.arquivo" [src]="environment.SOURCE_IMAGEM_ROOT + planta.imagem.arquivo"
+          alt="planta">
+      </div>
+      <div class="cl ">
+
+
+
+        <mat-form-field class="campo mr8" appearance="outline">
+          <mat-label>Tipo</mat-label>
+          <mat-select required [(ngModel)]="planta.tipoId" name="tipoId">
+            <mat-option *ngFor="let item of tipos" [value]="item.id">
+              {{ item.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="ml8 mr8" appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <input matInput [(ngModel)]="planta.descricao" type="text" min="1" name="descricao"
+            placeholder="Ex. PONTA DIREITA">
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="ml8 mr8" appearance="outline">
+          <mat-label>Tamanho</mat-label>
+          <input matInput [(ngModel)]="planta.tamanho" type="number" min="1" name="tamanho" placeholder="Ex. 47">
+          <span matSuffix>m²</span>
+
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="ml8 mr8" appearance="outline">
+          <mat-label>Tour Virtual Link</mat-label>
+          <input matInput [(ngModel)]="planta.linkTourVirtual" name="tourvirtualUrl" type="text"
+            placeholder="Ex. https://tourvirtual.com.br/produto-tour-planta-x">
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="ml8 mr8" appearance="outline">
+          <mat-label>Valor</mat-label>
+          <input matInput [(ngModel)]="planta.valor" name="valor" type="number" placeholder="Ex. 174.000">
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+        </mat-form-field>
+
+      </div>
+
+
+    </div>
+
+  </form>
+
+  <app-comodo-grid [plantaId]="planta.id" *ngIf="planta?.id"></app-comodo-grid>
+
+  <app-planta-vantagem-card [plantaId]="planta.id" *ngIf="planta?.id"></app-planta-vantagem-card>
+
+</div>
+
+<div class="share" *ngIf="janelaShare && conjuntosShare?.length && !shareCarregando">
+  <div class="fundo" (click)="janelaShare = false"></div>
+  <div class="quadro">
+    <div class="topo">
+      <div class="s4 fw600">Compartilhar / Copiar</div>
+      <div class="flex-center ml-full">
+        <button mat-button (click)="conjuntosSelecionadosShare = conjuntosShare">selecionar todos conjuntos</button>
+        <button mat-button color="warn" (click)="conjuntosSelecionadosShare = []">limpar seleção</button>
+      </div>
+    </div>
+    <div class="s3 fw300 w-100 cinza mt16 pa8 mb8 center">
+      Selecione os demais conjuntos do produto <b>{{ produto?.nome }}</b> que deseja compartilhar/copiar essa planta:
+    </div>
+    <div class="grid-infos center">
+      <app-conjunto-card [(multi)]="conjuntosSelecionadosShare" *ngFor="let item of conjuntosShare" [conjunto]="item">
+      </app-conjunto-card>
+    </div>
+    <div class="w-100 pt32">
+      <div class="s1 pl8 pr8 cinza"><b>Compartilhar:</b> Faz com que a planta seja espelhada nos conjuntos selecionados,
+        assim refletindo futuras alterações.</div>
+      <div class="s1 pa8 cinza"><b>Copiar:</b> Faz com que a planta seja duplicada nos conjuntos selecionados com os
+        dados atuais, assim futuras
+        alterações nessa planta não serão refletida nas plantas copiadas .</div>
+    </div>
+    <div class="botoes grid-infos w-100 pt32">
+      <button color="warn" type="button" (click)="janelaShare = false" mat-button>Cancelar</button>
+      <div class="mr8"></div>
+      <button color="primary" type="button" (click)="copiar(this.conjuntosSelecionadosShare)" mat-button>Copiar</button>
+      <div class="mr8"></div>
+      <button color="primary" type="button" (click)="compartilhar(this.conjuntosSelecionadosShare)"
+        mat-button>Compartilhar</button>
+    </div>
+  </div>
+</div>
+<div class="w-100 grid-infos pt32 carregando branco fw500" *ngIf="shareCarregando">
+  <span class="s4"> Carregando </span>
+  <span class="s4 pa16 pt8 pb8 br5 azul bg-amarelo mt16"> {{ shareSend }} / {{ conjuntosSelecionadosShare.length }}
+  </span>
+</div>

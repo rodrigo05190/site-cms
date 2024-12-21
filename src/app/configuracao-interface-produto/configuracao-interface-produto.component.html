@@ -1,0 +1,33 @@
+<form (submit)="salvar()" class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Configurações de exibição/interface</span>
+
+    <div class="botoes grid-infos ml-full">
+      <!-- <button  color="warn" type="button" (click)="excluir()" mat-button>Excluir</button> -->
+      <div class="mr8"></div>
+      <button color="primary" type="submit" mat-button>Salvar</button>
+    </div>
+  </div>
+
+  <div class="conteudo" *ngIf="model">
+
+    <div class="grid-infos">
+
+      <mat-checkbox [(ngModel)]="model.exibirStreetView" name="exibirStreetView" class="campo ma8">Exibir StreetView</mat-checkbox>
+
+      <!-- <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Exibir StreetView</mat-label>
+        <input matInput required type="checkbox" name="cep" placeholder="Ex. 08479586">
+      </mat-form-field> -->
+
+      <!-- <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Logradouro:</mat-label>
+        <input matInput required type="text" [(ngModel)]="endereco.logradouro" name="logradouro"
+          placeholder="Av. Luis José Costa">
+      </mat-form-field> -->
+
+    </div>
+
+
+  </div>
+</form>

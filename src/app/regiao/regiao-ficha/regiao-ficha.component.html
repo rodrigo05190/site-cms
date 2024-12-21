@@ -1,0 +1,95 @@
+<div class="flex-center ">
+  <div class="s7 fw600 ma16">Região</div>
+  <div class="ml-full"></div>
+  <div class="mr16"></div>
+</div>
+<div class="separador mt16 mb16"></div>
+<div class="flex-center regiao w-100 pl16 pr16">
+
+  <mat-accordion [displayMode]="'flat'" class="pais w-100" multi>
+    <mat-expansion-panel *ngFor="let pais of (paises() | async)">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{ pais.nome }} - {{ pais.sigla }}
+        </mat-panel-title>
+        <mat-panel-description>
+          País
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="flex-center mt16 mb16">
+        <button (click)="adicionarEstado(pais)" mat-flat-button color="primary">Adicionar novo estado em {{ pais.nome }} - {{ pais.sigla }}</button>
+        <div class="ml-full"></div>
+        <button (click)="alterarPais(pais)" mat-flat-button color="accent">Alterar pais {{ pais.nome }} - {{ pais.sigla }}</button>
+        <div class="mr16"></div>
+        <button (click)="excluirPais(pais)" mat-flat-button color="warn">Excluir país {{ pais.nome }} - {{ pais.sigla }}</button>
+      </div>
+      <mat-accordion [displayMode]="'flat'" class="estado">
+        <mat-expansion-panel *ngFor="let estado of (estados(pais.id) | async)">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ estado.nome }} - {{ estado.uf }}
+            </mat-panel-title>
+            <mat-panel-description>
+              Estado
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="flex-center mt16 mb16">
+            <button (click)="adicionarCidade(estado)" mat-flat-button color="primary">Adicionar nova Cidade em {{ estado.nome }} - {{ estado.uf }}</button>
+            <div class="ml-full"></div>
+            <button (click)="alterarEstado(pais, estado)" mat-flat-button color="accent">Alterar estado {{ estado.nome }} - {{ estado.uf }}</button>
+            <div class="mr16"></div>
+            <button (click)="excluirEstado(estado)" mat-flat-button color="warn">Excluir estado {{ estado.nome }} - {{ estado.uf }}</button>
+          </div>
+          <mat-accordion [displayMode]="'flat'" class="cidade">
+            <mat-expansion-panel *ngFor="let cidade of (cidades(estado.id) | async)">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ cidade.nome }}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Cidade
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="flex-center mt16 mb16">
+
+                <button (click)="adicionarBairro(cidade)" mat-flat-button color="primary">Adicionar novo Bairro em {{ cidade.nome }}</button>
+                <div class="ml-full"></div>
+                <button (click)="alterarCidade(estado, cidade)" mat-flat-button color="accent">Alterar cidade {{ cidade.nome }}</button>
+                <div class="mr16"></div>
+                <button (click)="excluirCidade(cidade)" mat-flat-button color="warn">Excluir cidade {{ cidade.nome }}</button>
+              </div>
+
+              <mat-accordion [displayMode]="'flat'" class="bairro">
+                <mat-expansion-panel *ngFor="let bairro of (bairros(cidade.id) | async)">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      {{ bairro.nome }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                      Bairro
+                    </mat-panel-description>
+                  </mat-expansion-panel-header>
+                  <div class="flex-center mt16 mb16">
+
+                    <div class="ml-full"></div>
+                    <button (click)="alterarBairro(cidade, bairro)" mat-flat-button color="accent">Alterar bairro {{ bairro.nome }}</button>
+                    <div class="mr16"></div>
+                    <button (click)="excluirBairro(bairro)" mat-flat-button color="warn">Excluir bairro {{ bairro.nome }}</button>
+                  </div>
+
+
+                </mat-expansion-panel>
+              </mat-accordion>
+
+            </mat-expansion-panel>
+
+          </mat-accordion>
+        </mat-expansion-panel>
+
+      </mat-accordion>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</div>

@@ -1,0 +1,16 @@
+<div class="inserir">
+</div>
+<div class="lista w-100">
+  <div class="w-100 pl16 pr16">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Procurar por link</mat-label>
+      <input matInput #t type="text" [(ngModel)]="searchText" class="bg-branco" placeholder="/fale-conosco">
+    </mat-form-field>
+  </div>
+  <div class="lista pl16 pr16 w-100">
+    <!-- <app-seo-link-card *ngFor="let item of items" class="mb16" [seo]="item"></app-seo-link-card> -->
+    <cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+      <app-seo-link-card *cdkVirtualFor="let item of items | filter:searchText" class="mb16" [seo]="item" >{{seo || 'Loading...'}}</app-seo-link-card>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

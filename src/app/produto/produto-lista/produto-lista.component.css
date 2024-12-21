@@ -1,0 +1,39 @@
+.conteudo {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-novo {
+  width: 280px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.add-novo mat-icon {
+  font-size: 92px;
+  opacity: 0.5;
+  text-align: center;
+}
+
+.procurar mat-form-field {
+  flex: 1;
+}
+
+button.modo-visualizacao {
+  font-size: 28px;
+  box-shadow: 0 7px 25px rgba(0, 22, 64, 0.16);
+  border: 1px solid transparent;
+}
+
+button.modo-visualizacao.ativo {
+  background: #d8d8d8 !important;
+  box-shadow: unset;
+  border: 1px solid rgba(0, 22, 64, 0.1);
+}
+
+.example-viewport {
+  flex: 1 0 auto;
+}

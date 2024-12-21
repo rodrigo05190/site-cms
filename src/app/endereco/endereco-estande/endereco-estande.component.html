@@ -1,0 +1,82 @@
+<form (submit)="salvar()" class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Endereço Estande</span>
+
+    <div class="botoes grid-infos ml-full">
+      <button *ngIf="this.enderecoEstande?.id" color="warn" type="button" (click)="excluir()" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button color="primary" type="submit" mat-button>Salvar</button>
+    </div>
+  </div>
+
+  <div class="conteudo">
+
+    <div class="grid-infos">
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Cep:</mat-label>
+        <input matInput required type="text" [(ngModel)]="enderecoEstande.cep" name="cep" placeholder="Ex. 08479586">
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Logradouro:</mat-label>
+        <input matInput required type="text" [(ngModel)]="enderecoEstande.logradouro" name="logradouro"
+          placeholder="Av. Luis José Costa">
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Coordenadas:</mat-label>
+        <input matInput required type="text" [(ngModel)]="enderecoEstande.coordenada" name="coordenadas"
+          placeholder="Ex. Av. -23.597616,-46.648031">
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Número:</mat-label>
+        <input matInput required type="number" [(ngModel)]="enderecoEstande.numero" name="numero" placeholder="380">
+      </mat-form-field>
+
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>País:</mat-label>
+        <mat-select required [(ngModel)]="paisSelecionado" name="pais">
+          <mat-option [value]="null">{{paisSelecionado == null ? "Selecionar": ""}}</mat-option>
+          <mat-option *ngFor="let item of paisesFiltrados()" [value]="item">{{ item.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Uf:</mat-label>
+        <mat-select required [(ngModel)]="estadoSelecionado" name="estado" (ngModelChange)="selecionarPais($event?.paisId)">
+          <mat-option [value]="null">{{estadoSelecionado == null ? "Selecionar": ""}}</mat-option>
+          <mat-option *ngFor="let item of estadosFiltrados()" [value]="item">{{ item.uf }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Cidade:</mat-label>
+        <mat-select [(ngModel)]="cidadeSelecionado" required name="cidade" (ngModelChange)="selecionarEstado($event?.estadoId)">
+          <mat-option [value]="null">{{cidadeSelecionado == null ? "Selecionar": ""}}</mat-option>
+          <mat-option *ngFor="let item of cidadesFiltrados()" [value]="item">{{ item.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Bairro:</mat-label>
+        <mat-select [(ngModel)]="bairroSelecionado" required name="bairro"
+          (ngModelChange)="selecionarCidade($event?.cidadeId)">
+          <mat-option [value]="null">{{bairroSelecionado == null ? "Selecionar": ""}}</mat-option>
+          <mat-option *ngFor="let item of bairrosFiltrados()" [value]="item">{{ item.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Região ID:</mat-label>
+        <input matInput type="number" [(ngModel)]="enderecoEstande.regiaoId" name="regiaoId" placeholder="5">
+      </mat-form-field>
+
+    </div>
+
+
+  </div>
+</form>

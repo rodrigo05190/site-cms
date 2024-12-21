@@ -1,0 +1,38 @@
+<img src="../../../assets/fundo_login.jpg" alt="fundo" class="fundo">
+<div class="conteudo scroll w-100 pt32 pb32">
+
+  <div class="bg-azul pl32 pr32 pb32 br5 miolo ">
+
+    <!-- <div class="s4 mb16 center">Login</div> -->
+    <div class="flex-center center pt32 pb32 w-100">
+      <img class="mb16 mt16 logo" src="../../assets/trisul-logo-texto-branco.svg" alt="Trisul">
+      <!-- <span class="s7 fw300 italic cinza ml16">Dashboard</span> -->
+    </div>
+
+
+    <div class="center branco fw500 s5 mb8">Acesso ao gerenciador</div>
+    <div class="center branco s1 fw300 br16 mb16">Insira a baixo os dados de acesso</div>
+    <form class="br5 pa8 w-100 lista" (ngSubmit)="logar(login)" #form="ngForm">
+
+      <p class="branco s2 mb8 fw500">Usuario</p>
+      <input class="bg-branco br5 pa8 s3 w-100 mb16" required type="text" [(ngModel)]="login.Usuario" name="usuario"
+        placeholder="">
+      <p class="branco s2 mb8 fw500">Senha</p>
+      <input class="bg-branco br5 pa8 s3 w-100 mb16" required type="password" [(ngModel)]="login.Senha" name="senha"
+        placeholder="">
+
+      <!-- <button mat-button [disabled]="!form.form.valid || carregando" -->
+
+      <div class="flex-center center w-100 mt16 mb16">
+
+        <button class="w-100 press" type="submit" class="bg-amarelo br5 s3 azul fw600 pt8 pb8 pl16 pr16 "
+          [disabled]="!form?.valid || carregando">{{ carregando ? 'Carregando' : 'Entrar' }}</button>
+      </div>
+
+    </form>
+
+    <p class="vermelho pa8 center" @ativarDesativar *ngIf="erro">{{ erro }}</p>
+
+  </div>
+
+</div>

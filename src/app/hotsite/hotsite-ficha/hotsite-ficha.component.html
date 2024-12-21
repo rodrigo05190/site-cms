@@ -1,0 +1,39 @@
+<form (submit)="salvar()" [formGroup]="form" *ngIf="form" class="quadro" #ngForm="ngForm"
+  [ngClass]="{ 'form-submitted': ngForm.submitted}">
+  <div class="topo">
+    <span class="s5 fw600">Hotsite</span>
+
+    <div class="botoes grid-infos ml-full">
+      <button type="button" *ngIf="jaExiste" color="warn" mat-button (click)="excluir()">Excluir</button>
+      <div class="mr8"></div>
+      <button class="ml8" type="submit" color="primary" mat-button>Salvar</button>
+    </div>
+  </div>
+
+  <div class="conteudo mt8" >
+    <div class="grid-infos">
+      <input formControlName="produtoId" [(ngModel)]="produtoId" hidden type="text">
+      <app-imagem-case required formControlName="imagemId" [(ngModel)]="hotsite.imagemId" [produtoId]="produtoId"
+        titulo='Plano de fundo' enviar=true remover=true></app-imagem-case>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Texto</mat-label>
+        <textarea formControlName="texto" [(ngModel)]="hotsite.texto" name="hotsite" matInput
+          placeholder="Ex. Melhor empreendimento da região..."></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="campo ma8" appearance="outline">
+        <mat-label>Url</mat-label>
+        <input matInput type="text" [(ngModel)]="hotsite.url" formControlName="url" name="url"
+          placeholder="Ex. https://trisul.com.br ">
+      </mat-form-field>
+      <button type="submit" hidden>enviar</button>
+
+      <!-- {{ form.valid | json }}
+      {{ form.errors | json }}
+      {{ form.value | json }} -->
+    </div>
+  </div>
+
+
+</form>

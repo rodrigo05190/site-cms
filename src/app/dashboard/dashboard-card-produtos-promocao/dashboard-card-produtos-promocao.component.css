@@ -1,0 +1,12 @@
+:host {}
+
+:host, .quadro {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.lista {
+  flex: 1;
+}
+

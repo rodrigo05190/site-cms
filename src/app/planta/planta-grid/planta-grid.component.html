@@ -1,0 +1,20 @@
+<div class="quadro">
+  <div class="topo">
+    <span class="s5 fw600">Plantas</span>
+    <div class="ml-full">
+      <!-- <button mat-button>replicar para todos os conjuntos</button> -->
+    </div>
+  </div>
+
+  <div class="grid-infos mt8">
+    <div mat-ripple class="add-novo s10 ma8 br5"
+      [routerLink]="'/produto/'+ produtoId + '/conjunto/' + conjuntoId + '/planta/novo'" style="min-height: 100px;">
+      <mat-icon [inline]="true">add</mat-icon>
+    </div>
+    <app-planta-card *ngFor="let item of plantas" [planta]="item" (removido)="this.ngOnInit()"
+      [conjuntoId]="conjuntoId"></app-planta-card>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,11 @@
+<div class="flex-center pa16">
+  <div class="s7 fw600 ">Seo Link</div>
+  <div class="ml-full"></div>
+  <button mat-flat-button color="primary" (click)="abrirNovo()">novo</button>
+</div>
+
+<div class="separador mt16 mb16"></div>
+
+<app-seo-link-card [abrirNovoCard]="abrirNovoCard" (fecharNovoCard)="fecharNovo($event)" *ngIf="abrirNovoCard" [seo]="seo" class="mb16"></app-seo-link-card>
+
+<app-seo-link-grid *ngIf="!abrirNovoCard"></app-seo-link-grid>

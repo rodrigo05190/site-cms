@@ -1,0 +1,14 @@
+mat-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.3);
+}
+
+mat-icon:hover {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.arrastar {
+  cursor: move !important;
+}

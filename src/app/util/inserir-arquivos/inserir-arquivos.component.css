@@ -1,0 +1,46 @@
+:host, .conteudo{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 200px;
+
+}
+
+.conteudo {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  height: 100%;
+}
+
+mat-icon {
+  pointer-events: none;
+}
+
+mat-icon {
+  font-size: 62px !important;
+  height: 62px !important;
+  width: 62px !important;
+  opacity: .3;
+
+}
+
+
+label {
+  cursor: pointer;
+  z-index: 5;
+}
+
+label:hover {
+
+}

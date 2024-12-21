@@ -1,0 +1,23 @@
+<div class="quadro">
+
+  <div class="topo flex-top w-100 mb8">
+    <span class="s4 cinza fw600">Últimos produtos <br> cadastrados</span>
+    <div class="ml-full"></div>
+    <button mat-stroked-button color="primary" routerLink="/produto/5">+ cadastrar</button>
+  </div>
+
+  <div class="lista scroll">
+
+    <div class="linha press w-100 flex-center" *ngFor="let item of items">
+      <div class="coluna cl-full">Omni Ibirapuera</div>
+      <div class="coluna cl-100 flex-end">
+        <button class="press br5 ml8" mat-ripple matTooltip="Acessar" ><mat-icon [inline]="true">open_in_new</mat-icon></button>
+        <button class="press br5 ml8" mat-ripple matTooltip="Editar" ><mat-icon [inline]="true">edit</mat-icon></button>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  </div>

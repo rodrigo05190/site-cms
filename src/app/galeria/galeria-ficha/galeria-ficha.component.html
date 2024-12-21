@@ -1,0 +1,45 @@
+<div class="conteudo">
+  <div class="topo s4 pl8 pr8 bg-cinza-muito-claro">
+    <div class="s2 ma8">{{ galeria?.titulo }}</div>
+    <div class="s1 bg-amarelo azul fw500 brt ma8 pt4 pb4 pl8 pr8">{{ galeria?.tipo?.nome }}</div>
+
+    <div class="botoes grid-infos ml-full">
+      <button (click)="deletarGaleria()" color="warn" mat-button>Excluir</button>
+      <div class="mr8"></div>
+      <button (click)="editar()" color="primary" mat-button>Editar</button>
+      <div class="mr8"></div>
+      <mat-icon (click)="fechar.emit()" class="hv-bg-cinza-claro brt pa4">close</mat-icon>
+    </div>
+
+  </div>
+
+  <div class="grid-infos ma16" #imagens>
+
+    <div class="w-100 flex-center center pa16" *ngIf="status == 'carregando'"><mat-spinner></mat-spinner></div>
+    <div class="w-100 flex-center center pa32 cinza fw300 s5" *ngIf="status == 'vazio'">Essa galeria está vazia</div>
+
+    <app-imagem-case [produtoId]="produtoId" ngSortGridGroup="imagemGrid" visualizar=true remover=true descricao=true
+      [(multi)]="imagensDeletar" ngSortgridItem [ngSortGridItems]='items' (sorted)="ordenar($event)"
+      (clickDeletar)="deletar($event)" *ngFor="let item of items" [imagem]="item" [id]='item.id'>
+    </app-imagem-case>
+
+    <app-imagem-case [produtoId]="produtoId" title="Enviando" *ngFor="let imagemParaEnviar of arquivosParaEnviar"
+      [fileUpload]="imagemParaEnviar" (uploadFinalizado)="uploadFinalizado($event, imagemParaEnviar)"></app-imagem-case>
+
+    <div class="w-100 mb8 mt16 pa8" @ativarDesativar *ngIf="imagensDeletar?.length">
+      <button color="warn" class="w-100" (click)="deletarMultiplas()" mat-flat-button>
+        Excluir imagens selecionadas ({{ imagensDeletar?.length }})
+      </button>
+    </div>
+
+  </div>
+  <app-inserir-arquivos (arquivosParaEnviar)="arquivosParaEditar = ($event)"></app-inserir-arquivos>
+
+</div>
+
+<app-imagem-editor *ngIf="arquivosParaEditar.length" [(arquivos)]="arquivosParaEditar"
+  (resultado)="edicaoFinalizada($event)"></app-imagem-editor>
+
+
+<app-galeria-record *ngIf="telaeditar && galeria != null" [(galeria)]="galeria" (cancelado)="telaeditar = false"
+  (salvo)="telaeditar = false; this.galeria = $event; salvo.emit($event)"></app-galeria-record>

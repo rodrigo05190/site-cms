@@ -1,0 +1,31 @@
+<div class="flex-center">
+  <div class="s7 fw600 ma16">Cards Home</div>
+  <div class="ml-full"></div>
+  <div class="botoes mr16">
+    <!-- <button (click)="novo = true" mat-button>novo</button> -->
+  </div>
+</div>
+<div class="separador mt16 mb16"></div>
+<div class="flex-center w-100 pl16 pr16">
+
+  <mat-form-field style="width: 500px; max-width: 100%;" class="ml8 mr8" appearance="outline">
+    <mat-label>Produto</mat-label>
+    <mat-select [(ngModel)]="selecionadoParaInserir">
+      <mat-option *ngFor="let item of listaFiltrada(cardsHome)" [value]="item">{{ item.nome }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button (click)="adicionar(selecionadoParaInserir)" mat-button type="button">Adicionar</button>
+
+</div>
+
+<div class="separador mt8 mb16"></div>
+<div class="w-100 grid-infos pl16 pr16">
+
+  <!-- <app-redirect-card *ngFor="let item of lista()" (atualizar)="atualizar()" [redirect]="item"></app-redirect-card> -->
+  <app-produto-card [acao]="'remover'" (removido)="remover($event)" [modo]="'card'" ngSortGridGroup="gridProduto"
+      *ngFor="let produto of produtoCardsHome" ngSortgridItem [ngSortGridItems]='produtoCardsHome'
+      (sorted)="ordenados($event)" class="br5 ma8" [produto]="produto">
+    </app-produto-card>
+
+</div>

@@ -1,0 +1,65 @@
+<div class="conteudo pa16 br5 bg-branco lista">
+
+  <div class="flex-center fila w-100 mb16">
+
+    <!-- <div class="" *ngFor="let item of imagens"> -->
+
+    <img *ngFor="let item of imagens" [src]="item.originalBase64" alt="imagem">
+  </div>
+
+
+    <div class="flex-center w-100 asd" *ngIf="imagens[indexAtual]?.originalBase64 as b64" >
+      <div class="janela">
+        <!-- {{ imagens[indexAtual]?.tipo }} -->
+        <image-cropper [imageBase64]="b64" [maintainAspectRatio]="false"
+          [containWithinAspectRatio]="containWithinAspectRatio" [aspectRatio]="16 / 9" [resizeToWidth]="1280"
+          [cropperMinWidth]="128" [onlyScaleDown]="true" [roundCropper]="false" [canvasRotation]="canvasRotation"
+          [transform]="transform" [alignImage]="'center'" [style.display]="showCropper ? null : 'none'" [format]="imagens[indexAtual].tipo"
+          (imageCropped)="imageCropped($event, imagens[indexAtual])" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady($event)"
+          (loadImageFailed)="loadImageFailed()"></image-cropper>
+      </div>
+      <div class="janela lista">
+        <div class=" flex-center">
+          <div class="s4">
+            Preview
+          </div>
+          <button mat-button (click)="previewModoThumb = true">thumb</button>
+          <button mat-button (click)="previewModoThumb = false">final</button>
+        </div>
+
+        <div *ngIf="previewModoThumb" class="preview mt-full mb-full thumb">
+          <img *ngIf="croppedImage" class="principal" [src]="croppedImage" />
+          <img *ngIf="croppedImage" class="fundo" [src]="croppedImage" />
+        </div>
+
+        <div *ngIf="!previewModoThumb" class="preview mt-full mb-full final">
+          <img *ngIf="croppedImage" class="principal" [src]="croppedImage" />
+          <!-- <img class="fundo" [src]="croppedImage" /> -->
+        </div>
+      </div>
+    </div>
+
+  <div class="flex-center mt16 w-100">
+    <div class="flex-center mr-full w-100">
+
+      <input type="file" (change)="fileChangeEvent($event)" />
+      <button (click)="rotateLeft()">
+        <mat-icon>rotate_left</mat-icon>
+      </button>
+      <button (click)="rotateRight()">
+        <mat-icon>rotate_right</mat-icon>
+      </button>
+      <button (click)="flipHorizontal()">Flip horizontal</button>
+      <button (click)="flipVertical()">Flip vertical</button>
+      <button
+        (click)="toggleContainWithinAspectRatio()">{{containWithinAspectRatio?'Fill Aspect Ratio':'Contain Within Aspect Ratio'}}</button>
+      <button (click)="resetImage()">Reset image</button>
+      <!-- <input [(ngModel)]="rotation" placeholder="Rotation" type="number" (change)="updateRotation()" /> -->
+
+      <button (click)="zoomOut()">Zoom -</button> <button (click)="zoomIn()">Zoom +</button>
+    </div>
+    <button mat-button class="ml8" color="warn" (click)="fechar()">cancelar</button>
+    <button mat-button class="ml8" color="primary" (click)="continuar()">continuar</button>
+  </div>
+
+</div>

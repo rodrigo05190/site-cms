@@ -1,0 +1,59 @@
+.s0 { font-size: .75rem; }
+.s1 { font-size: .875rem; }
+.s2 { font-size: 1rem; line-height: 1.25;}
+.s3 { font-size: 1.125rem; }
+.s4 { font-size: 1.25rem; }
+.s5 { font-size: 1.5rem; line-height: 1.2;}
+.s6 { font-size: 1.625rem; line-height: 1;}
+.s7 { font-size: 2rem; line-height: 1;}
+.s8 { font-size: 2.5rem; line-height: 1;}
+.s9 { font-size: 3rem; line-height: 1;}
+.s10 { font-size: 5rem; line-height: 1;}
+
+/* 1rem = 16px */
+
+.upc{ text-transform: uppercase;}
+.lwc {text-transform: lowercase;}
+
+.capitalize { text-transform: capitalize; }
+
+.dcr {
+  text-decoration: underline;
+}
+
+.normal {
+  font-style: normal;
+}
+
+.center { text-align: center; justify-content: center;}
+
+.left { text-align: left}
+.right { text-align: right}
+
+.italic { font-style: italic;}
+
+b, .bold { font-weight: 900; }
+.fw900 { font-weight: 900; }
+.fw800 { font-weight: 800; }
+.fw700 { font-weight: 700; }
+.fw600 { font-weight: 600; }
+.fw500 { font-weight: 500; }
+.fw400 { font-weight: 400; }
+.fw300 { font-weight: 300; }
+.fw200 { font-weight: 200; }
+.fw100 { font-weight: 100; }
+
+.sublinhado {
+  text-decoration: underline;
+}
+
+.naoquebra
+{
+  white-space: nowrap;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

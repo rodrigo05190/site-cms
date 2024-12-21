@@ -1,0 +1,26 @@
+<div class="bg-branco pa32 pb16 br5 lista">
+
+  <mat-form-field class="" appearance="outline">
+    <mat-label>Tipo</mat-label>
+    <mat-select required name="tipo" [(ngModel)]="galeria.tipo">
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo">
+        {{ tipo.nome }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="" appearance="outline">
+    <mat-label>Titulo</mat-label>
+    <input matInput name="titulo" [(ngModel)]="galeria.titulo" placeholder="Ex. Fase 1">
+    <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+  </mat-form-field>
+
+  <div class="flex-center w-100" *ngIf="!carregando">
+    <button color="warn" (click)="cancelado.emit()" mat-button>Cancelar</button>
+    <div class="ml-full"></div>
+    <button mat-button (click)="salvar()">Salvar</button>
+  </div>
+  <div *ngIf="carregando" class="flex-center center w-100">
+    Carregando
+  </div>
+</div>
